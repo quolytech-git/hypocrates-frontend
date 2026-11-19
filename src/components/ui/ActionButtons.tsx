@@ -69,9 +69,11 @@ export function PrimaryGlassButton({
           className="inline-flex items-center justify-center rounded-full bg-white shrink-0 overflow-hidden"
           style={{ height: circleSize }}
         >
-          <img
+          <motion.img
             src="/images/arrow.svg"
             alt=""
+            animate={hovered ? { x: 0 } : { x: [0, 2.5, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="w-[13px] h-[9px] shrink-0"
           />
         </motion.span>
@@ -91,9 +93,11 @@ export function PrimaryGlassButton({
           className="inline-flex items-center justify-center rounded-full bg-white shrink-0 overflow-hidden"
           style={{ height: circleSize }}
         >
-          <img
+          <motion.img
             src="/images/arrow.svg"
             alt=""
+            animate={hovered ? { x: 0 } : { x: [0, 2.5, 0] }}
+            transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
             className="w-[13px] h-[9px] shrink-0"
           />
         </motion.span>

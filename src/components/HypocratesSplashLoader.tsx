@@ -31,7 +31,10 @@ export function HypocratesSplashLoader() {
         rafId = requestAnimationFrame(tick);
       } else {
         rafId = requestAnimationFrame(() => {
-          setTimeout(() => setVisible(false), 180);
+          setTimeout(() => {
+            window.dispatchEvent(new Event("hypocrates:ready"));
+            setVisible(false);
+          }, 180);
         });
       }
     };
@@ -39,6 +42,11 @@ export function HypocratesSplashLoader() {
     rafId = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(rafId);
   }, []);
+
+  const handleSkip = () => {
+    window.dispatchEvent(new Event("hypocrates:ready"));
+    setVisible(false);
+  };
 
   const currentPhase =
     [...BOOT_PHASES].reverse().find((p) => progress >= p.at)?.text ??
@@ -76,7 +84,7 @@ export function HypocratesSplashLoader() {
           {/* Skip Intro Pill */}
           <button
             type="button"
-            onClick={() => setVisible(false)}
+            onClick={handleSkip}
             className="absolute top-6 right-6 z-20 px-4 py-1.5 rounded-full bg-white/85 hover:bg-[#1d1d1d] hover:text-white border border-[#dde5ed] font-display font-semibold text-[12.5px] text-[#4d585f] shadow-sm transition-colors cursor-pointer"
           >
             Skip Intro ✕

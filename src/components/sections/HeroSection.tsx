@@ -1,14 +1,27 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import { PrimaryGlassButton, SecondaryPillButton } from "@/components/ui/ActionButtons";
 import { HypocratesDashboardPreview } from "@/components/hypocrates/HypocratesDashboardPreview";
 
 export function HeroSection() {
   const heroRef = useRef<HTMLElement>(null);
+  const [heroReady, setHeroReady] = useState(false);
 
-  // Responsive, silky scroll curve: slightly faster than 0.62 while avoiding sluggish spring lag
+  // Sync entrance animations with the splash loader curtain lift so mobile & desktop users actually see Hero + CTAs animate in
+  useEffect(() => {
+    const onReady = () => setHeroReady(true);
+    window.addEventListener("hypocrates:ready", onReady);
+    const hasSplash = Boolean(document.querySelector('[aria-label="Loading Hypocrates Clinical Platform"]'));
+    const fallback = setTimeout(() => setHeroReady(true), hasSplash ? 2050 : 60);
+    return () => {
+      window.removeEventListener("hypocrates:ready", onReady);
+      clearTimeout(fallback);
+    };
+  }, []);
+
+  // Responsive, silky scroll curve active on both mobile and desktop
   const { scrollYProgress } = useScroll({
     target: heroRef,
     offset: ["start start", "end start"],
@@ -20,13 +33,13 @@ export function HeroSection() {
     mass: 0.2,
   });
 
-  // Dashboard starts tucked behind flower hills at scale 0.76 and rises cleanly to full width 1.0
-  const dashboardScale = useTransform(smoothProgress, [0, 0.46], [0.76, 1]);
-  const dashboardY = useTransform(smoothProgress, [0, 0.46], [10, -56]);
+  // Dashboard starts tucked behind flower hills and rises cleanly to full width 1.0
+  const dashboardScale = useTransform(smoothProgress, [0, 0.45], [0.82, 1]);
+  const dashboardY = useTransform(smoothProgress, [0, 0.45], [8, -44]);
 
-  // Foreground flower hills sit IN FRONT of the peeking dashboard at scroll=0, then recede swiftly & smoothly
+  // Foreground flower hills sit IN FRONT of the peeking dashboard at scroll=0, then recede cleanly down & out
   const hillsY = useTransform(smoothProgress, [0, 0.44], [0, 320]);
-  const hillsOpacity = useTransform(smoothProgress, [0.14, 0.46], [1, 0]);
+  const hillsOpacity = useTransform(smoothProgress, [0.12, 0.45], [1, 0]);
 
   // Smooth cloud parallax across the hero scroll
   const cloudLeftX = useTransform(smoothProgress, [0, 1], [0, -110]);
@@ -47,16 +60,16 @@ export function HeroSection() {
         />
       </div>
 
-      {/* Bottom white gradient fade over meadow & bottom edge of scrolled dashboard */}
+      {/* Bottom white gradient fade seamlessly melting meadow grass into white below */}
       <div
-        className="pointer-events-none select-none absolute inset-x-0 bottom-0 h-[140px] sm:h-[180px] md:h-[210px] z-30"
+        className="pointer-events-none select-none absolute inset-x-0 bottom-0 h-[150px] sm:h-[180px] md:h-[210px] z-30"
         style={{
           background:
-            "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 70%, #ffffff 100%)",
+            "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.88) 72%, #ffffff 100%)",
         }}
       />
 
-      {/* Floating Clouds (Visible on mobile too, scaled gently) */}
+      {/* Floating Clouds */}
       <motion.div
         style={{ x: cloudLeftX }}
         className="block absolute top-[72px] lg:top-[20px] -left-[90px] sm:-left-[110px] lg:-left-[120px] w-[250px] sm:w-[440px] lg:w-[620px] pointer-events-none select-none z-[1] will-change-transform"
@@ -96,13 +109,13 @@ export function HeroSection() {
         />
       </motion.div>
 
-      {/* Hero Center Content (z-30 ensures Trust Row & buttons always stay crisp above meadow hills) */}
+      {/* Hero Center Content */}
       <div className="relative z-30 max-w-[1140px] mx-auto px-4 sm:px-5 text-center">
         {/* Animated Brand Seal above Headline */}
         <motion.div
-          initial={{ opacity: 0.001, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", bounce: 0, duration: 0.8 }}
+          initial={{ opacity: 0, y: 14 }}
+          animate={heroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+          transition={{ type: "spring", stiffness: 220, damping: 24 }}
           className="mb-4 sm:mb-5 inline-flex max-w-full items-center gap-2 sm:gap-3 rounded-full bg-white/90 backdrop-blur-md border border-[#dde5ed] pl-2.5 sm:pl-3 pr-3.5 sm:pr-5 py-1.5 sm:py-2 shadow-[0_10px_28px_rgba(16,28,48,0.08)]"
         >
           <motion.img
@@ -127,9 +140,9 @@ export function HeroSection() {
 
         {/* Headline: Clinical [AI] Platform */}
         <motion.div
-          initial={{ opacity: 0.001, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", bounce: 0, duration: 1, delay: 0.05 }}
+          initial={{ opacity: 0, y: 22 }}
+          animate={heroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 22 }}
+          transition={{ type: "spring", stiffness: 200, damping: 24, delay: 0.06 }}
           className="flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-5 gap-y-2"
         >
           <h1 className="font-heading font-semibold text-[40px] sm:text-[74px] lg:text-[100px] leading-[1em] tracking-[-1.2px] sm:tracking-[-1.4px] text-[#1d1d1d]">
@@ -137,11 +150,20 @@ export function HeroSection() {
           </h1>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.75, rotate: -22 }}
-            animate={{ opacity: 1, scale: 1, rotate: -10 }}
+            initial={{ opacity: 0, scale: 0.68, rotate: -26 }}
+            animate={
+              heroReady
+                ? { opacity: 1, scale: 1, rotate: [-10, -4, -10], y: [0, -4, 0] }
+                : { opacity: 0, scale: 0.68, rotate: -26 }
+            }
             whileHover={{ rotate: -2, scale: 1.07 }}
-            whileTap={{ rotate: 0, scale: 0.95 }}
-            transition={{ type: "spring", stiffness: 260, damping: 18, delay: 0.12 }}
+            whileTap={{ rotate: 0, scale: 0.94 }}
+            transition={{
+              opacity: { duration: 0.45, delay: 0.1 },
+              scale: { type: "spring", stiffness: 260, damping: 18, delay: 0.1 },
+              rotate: { duration: 4.5, repeat: Infinity, ease: "easeInOut" },
+              y: { duration: 4.5, repeat: Infinity, ease: "easeInOut" },
+            }}
             className="inline-flex items-center justify-center w-[48px] h-[48px] sm:w-[82px] sm:h-[82px] lg:w-[104px] lg:h-[104px] shrink-0 cursor-pointer"
           >
             <img
@@ -158,20 +180,24 @@ export function HeroSection() {
 
         {/* Subtitle */}
         <motion.p
-          initial={{ opacity: 0.001, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", bounce: 0, duration: 1, delay: 0.15 }}
+          initial={{ opacity: 0, y: 18 }}
+          animate={heroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
+          transition={{ type: "spring", stiffness: 200, damping: 24, delay: 0.14 }}
           className="mt-4 sm:mt-5 font-display font-medium text-[15.5px] sm:text-[20px] leading-[1.4em] text-[#4d585f] max-w-[620px] mx-auto px-1"
         >
           The AI Management System for Modern Healthcare Clinics — operate
           smarter, faster, and more efficiently with specialized clinical workflows.
         </motion.p>
 
-        {/* CTAs (interactive touch & hover spring animations) */}
+        {/* CTAs */}
         <motion.div
-          initial={{ opacity: 0.001, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", bounce: 0, duration: 1, delay: 0.25 }}
+          initial={{ opacity: 0, y: 18, scale: 0.96 }}
+          animate={
+            heroReady
+              ? { opacity: 1, y: 0, scale: 1 }
+              : { opacity: 0, y: 18, scale: 0.96 }
+          }
+          transition={{ type: "spring", stiffness: 210, damping: 22, delay: 0.2 }}
           className="mt-7 sm:mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
         >
           <PrimaryGlassButton
@@ -188,9 +214,9 @@ export function HeroSection() {
 
         {/* Trust Row */}
         <motion.div
-          initial={{ opacity: 0.001, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ type: "spring", bounce: 0, duration: 1, delay: 0.32 }}
+          initial={{ opacity: 0, y: 14 }}
+          animate={heroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 14 }}
+          transition={{ type: "spring", stiffness: 200, damping: 24, delay: 0.26 }}
           className="mt-6 sm:mt-7 flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-5 gap-y-2 text-[#4d585f] font-display font-medium text-[13.5px] sm:text-[16px]"
         >
           <div className="flex items-center gap-2">
@@ -211,7 +237,7 @@ export function HeroSection() {
       </div>
 
       {/* Dashboard Mockup + Foreground Flower Hills Layer */}
-      <div className="relative mt-10 md:mt-12 max-w-[1440px] mx-auto px-4 sm:px-8">
+      <div className="relative mt-8 sm:mt-10 md:mt-12 max-w-[1440px] mx-auto px-4 sm:px-8">
         {/* Scroll transform wrapper kept separate from mount entrance so y transforms never fight */}
         <motion.div
           style={{
@@ -221,27 +247,27 @@ export function HeroSection() {
           className="relative z-10 max-w-[1040px] mx-auto origin-top will-change-transform"
         >
           <motion.div
-            initial={{ opacity: 0.001, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", stiffness: 220, damping: 26, delay: 0.25 }}
+            initial={{ opacity: 0, y: 28 }}
+            animate={heroReady ? { opacity: 1, y: 0 } : { opacity: 0, y: 28 }}
+            transition={{ type: "spring", stiffness: 190, damping: 24, delay: 0.3 }}
             className="rounded-[18px] md:rounded-[24px] border border-[#bababa] overflow-hidden bg-white shadow-[0_30px_80px_rgba(16,28,48,0.16)]"
           >
             <HypocratesDashboardPreview variant="command" />
           </motion.div>
         </motion.div>
 
-        {/* Foreground Flower Hills (now active on mobile too, sliding smoothly down on scroll) */}
+        {/* Foreground Flower Hills: sized cleanly with object-cover on mobile so wildflower bed seamlessly reaches bottom fade without mid-card clipping */}
         <motion.div
           style={{
             y: hillsY,
             opacity: hillsOpacity,
           }}
-          className="block absolute -top-[16px] sm:-top-[28px] lg:-top-[55px] left-1/2 -translate-x-1/2 w-[155vw] sm:w-[126vw] md:w-[108vw] max-w-[1720px] z-20 pointer-events-none select-none will-change-[transform,opacity]"
+          className="block absolute -top-[14px] sm:-top-[28px] lg:-top-[55px] left-1/2 -translate-x-1/2 w-[114vw] sm:w-[120vw] md:w-[108vw] max-w-[1720px] z-20 pointer-events-none select-none will-change-[transform,opacity]"
         >
           <img
             src="/images/hero-hills.png"
             alt=""
-            className="w-full h-auto object-contain"
+            className="w-full h-[390px] sm:h-[440px] md:h-auto object-cover object-top"
           />
         </motion.div>
       </div>
