@@ -62,7 +62,7 @@ export function SpecializedClinicsSection({
         {/* Horizontal Scrollable Cards */}
         <div
           ref={trackRef}
-          className="mt-10 flex gap-5 overflow-x-auto no-scrollbar pb-4"
+          className="mt-10 flex gap-4 sm:gap-5 overflow-x-auto no-scrollbar pb-4 snap-x snap-mandatory scroll-pl-5"
         >
           {CLINIC_ORDER.map((slug) => {
             const item = clinicSolutions[slug];
@@ -70,7 +70,7 @@ export function SpecializedClinicsSection({
             return (
               <div
                 key={slug}
-                className="shrink-0 w-[310px] sm:w-[345px] rounded-[24px] bg-[#edf1f4] border border-[#dde5ed] p-6 sm:p-7 flex flex-col justify-between"
+                className="snap-start shrink-0 w-[84vw] max-w-[345px] rounded-[24px] bg-[#edf1f4] border border-[#dde5ed] p-5 sm:p-7 flex flex-col justify-between transition-transform duration-300 active:scale-[0.99]"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2">

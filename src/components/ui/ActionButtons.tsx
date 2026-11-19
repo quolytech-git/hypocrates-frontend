@@ -44,10 +44,14 @@ export function PrimaryGlassButton({
   const circleSize = isSmall ? 30 : 34;
 
   const content = (
-    <span
+    <motion.span
+      whileTap={{ scale: 0.96 }}
+      transition={{ type: "spring", stiffness: 450, damping: 28 }}
       className={`inline-flex max-w-full items-center rounded-full ${paddingClass} ${outerStyle} transition-transform duration-300 ${className}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
+      onPointerDown={() => setHovered(true)}
+      onPointerUp={() => setTimeout(() => setHovered(false), 320)}
     >
       <span
         className={`relative inline-flex max-w-full items-center justify-center rounded-full overflow-hidden ${innerHeight} ${innerStyle} font-display font-semibold ${textSize} leading-[1.3em] whitespace-nowrap select-none`}
@@ -94,7 +98,7 @@ export function PrimaryGlassButton({
           />
         </motion.span>
       </span>
-    </span>
+    </motion.span>
   );
 
   if (external) {
@@ -137,7 +141,9 @@ export function SecondaryPillButton({
       href={href}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={`inline-flex items-center justify-center rounded-full px-7 sm:px-[44px] h-[54px] sm:h-[64px] font-display font-semibold text-[16px] sm:text-[18px] leading-[1.3em] transition-colors duration-[400ms] ease-[cubic-bezier(0.44,0,0.56,1)] shadow-[0_6px_24px_rgba(0,0,0,0.06)] ${colorClass} ${className}`}
+      onPointerDown={() => setHovered(true)}
+      onPointerUp={() => setTimeout(() => setHovered(false), 320)}
+      className={`inline-flex items-center justify-center rounded-full px-7 sm:px-[44px] h-[54px] sm:h-[64px] font-display font-semibold text-[16px] sm:text-[18px] leading-[1.3em] transition-all duration-[350ms] active:scale-[0.96] ease-[cubic-bezier(0.44,0,0.56,1)] shadow-[0_6px_24px_rgba(0,0,0,0.06)] ${colorClass} ${className}`}
     >
       <span className="relative block h-[24px] overflow-hidden">
         <motion.span

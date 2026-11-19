@@ -142,11 +142,11 @@ export function SecurityAndUseCases() {
           onMouseMove={onMouseMove}
           onMouseUp={stopDrag}
           onMouseLeave={stopDrag}
-          className="mt-12 flex gap-5 overflow-x-auto no-scrollbar px-5 md:px-12 cursor-[col-resize] select-none"
+          className="mt-10 md:mt-12 flex gap-4 md:gap-5 overflow-x-auto no-scrollbar px-5 md:px-12 cursor-[col-resize] select-none snap-x snap-mandatory scroll-pl-5"
         >
           {useCases.map((uc) => (
             <React.Fragment key={uc.title}>
-              <div className="shrink-0 w-[290px] sm:w-[320px] h-[400px] rounded-[24px] overflow-hidden bg-[#edf1f4]">
+              <div className="snap-start shrink-0 w-[76vw] max-w-[320px] h-[340px] sm:h-[400px] rounded-[24px] overflow-hidden bg-[#edf1f4]">
                 <img
                   src={uc.photo}
                   alt={uc.title}
@@ -155,7 +155,7 @@ export function SecurityAndUseCases() {
                 />
               </div>
 
-              <div className="relative shrink-0 w-[320px] sm:w-[360px] h-[400px] rounded-[24px] overflow-hidden border border-[#dde5ed]/80 p-7 flex flex-col justify-between">
+              <div className="snap-start relative shrink-0 w-[82vw] max-w-[360px] h-[340px] sm:h-[400px] rounded-[24px] overflow-hidden border border-[#dde5ed]/80 p-6 sm:p-7 flex flex-col justify-between">
                 <img
                   src={uc.bg}
                   alt=""

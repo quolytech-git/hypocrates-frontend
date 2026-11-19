@@ -36,7 +36,7 @@ export function HeroSection() {
   return (
     <section
       ref={heroRef}
-      className="relative w-full overflow-hidden pt-[148px] sm:pt-[158px] lg:pt-[165px] pb-32 md:pb-44"
+      className="relative w-full overflow-hidden pt-[114px] sm:pt-[148px] lg:pt-[165px] pb-24 sm:pb-32 md:pb-44"
     >
       {/* Sky & Meadow Background */}
       <div className="absolute inset-0 pointer-events-none select-none z-0">
@@ -49,43 +49,43 @@ export function HeroSection() {
 
       {/* Bottom white gradient fade over meadow & bottom edge of scrolled dashboard */}
       <div
-        className="pointer-events-none select-none absolute inset-x-0 bottom-0 h-[180px] md:h-[210px] z-30"
+        className="pointer-events-none select-none absolute inset-x-0 bottom-0 h-[140px] sm:h-[180px] md:h-[210px] z-30"
         style={{
           background:
             "linear-gradient(to bottom, rgba(255,255,255,0) 0%, rgba(255,255,255,0.85) 70%, #ffffff 100%)",
         }}
       />
 
-      {/* Floating Clouds (Desktop) */}
+      {/* Floating Clouds (Visible on mobile too, scaled gently) */}
       <motion.div
         style={{ x: cloudLeftX }}
-        className="hidden lg:block absolute top-[20px] -left-[120px] w-[620px] pointer-events-none select-none z-[1] will-change-transform"
+        className="block absolute top-[72px] lg:top-[20px] -left-[90px] sm:-left-[110px] lg:-left-[120px] w-[250px] sm:w-[440px] lg:w-[620px] pointer-events-none select-none z-[1] will-change-transform"
       >
         <motion.img
           src="/images/cloud-1.png"
           alt=""
           animate={{ y: [0, -10, 0], x: [0, 8, 0] }}
           transition={{ duration: 9, repeat: Infinity, ease: "easeInOut" }}
-          className="w-full h-auto object-contain opacity-95 will-change-transform"
+          className="w-full h-auto object-contain opacity-65 lg:opacity-95 will-change-transform"
         />
       </motion.div>
 
       <motion.div
         style={{ x: cloudRightX }}
-        className="hidden lg:block absolute top-[110px] -right-[110px] w-[640px] pointer-events-none select-none z-[1] will-change-transform"
+        className="block absolute top-[120px] lg:top-[110px] -right-[90px] lg:-right-[110px] w-[260px] sm:w-[450px] lg:w-[640px] pointer-events-none select-none z-[1] will-change-transform"
       >
         <motion.img
           src="/images/cloud-3.png"
           alt=""
           animate={{ y: [0, 12, 0], x: [0, -10, 0] }}
           transition={{ duration: 11, repeat: Infinity, ease: "easeInOut" }}
-          className="w-full h-auto object-contain opacity-95 will-change-transform"
+          className="w-full h-auto object-contain opacity-65 lg:opacity-95 will-change-transform"
         />
       </motion.div>
 
       <motion.div
         style={{ y: cloudCenterY }}
-        className="hidden lg:block absolute top-[260px] left-1/2 -translate-x-1/2 w-[720px] pointer-events-none select-none z-[1] will-change-transform"
+        className="hidden sm:block absolute top-[260px] left-1/2 -translate-x-1/2 w-[540px] lg:w-[720px] pointer-events-none select-none z-[1] will-change-transform"
       >
         <motion.img
           src="/images/cloud-2.png"
@@ -97,28 +97,31 @@ export function HeroSection() {
       </motion.div>
 
       {/* Hero Center Content (z-30 ensures Trust Row & buttons always stay crisp above meadow hills) */}
-      <div className="relative z-30 max-w-[1140px] mx-auto px-5 text-center">
+      <div className="relative z-30 max-w-[1140px] mx-auto px-4 sm:px-5 text-center">
         {/* Animated Brand Seal above Headline */}
         <motion.div
           initial={{ opacity: 0.001, y: 12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", bounce: 0, duration: 0.8 }}
-          className="mb-5 inline-flex items-center gap-3 rounded-full bg-white/90 backdrop-blur-md border border-[#dde5ed] pl-3 pr-5 py-2 shadow-[0_10px_28px_rgba(16,28,48,0.08)]"
+          className="mb-4 sm:mb-5 inline-flex max-w-full items-center gap-2 sm:gap-3 rounded-full bg-white/90 backdrop-blur-md border border-[#dde5ed] pl-2.5 sm:pl-3 pr-3.5 sm:pr-5 py-1.5 sm:py-2 shadow-[0_10px_28px_rgba(16,28,48,0.08)]"
         >
           <motion.img
             src="/images/hypocrates-logo.png"
             alt="Hypocrates Logo"
             animate={{ rotate: [0, -3, 3, 0] }}
             transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-            className="h-9 w-9 object-contain shrink-0"
+            className="h-7 w-7 sm:h-9 sm:w-9 object-contain shrink-0"
           />
-          <span className="font-heading font-bold text-[16px] text-[#1d1d1d]">
+          <span className="font-heading font-bold text-[14px] sm:text-[16px] text-[#1d1d1d]">
             Hypocrates
           </span>
-          <span className="w-[1px] h-4 bg-[#1d1d1d]/15" />
-          <span className="inline-flex items-center gap-1.5 font-display font-medium text-[13.5px] text-[#4d585f]">
-            <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse" />
-            Ancient Clinical Wisdom × Modern AI
+          <span className="w-[1px] h-3.5 sm:h-4 bg-[#1d1d1d]/15" />
+          <span className="inline-flex items-center gap-1.5 font-display font-medium text-[12px] sm:text-[13.5px] text-[#4d585f] truncate">
+            <span className="w-2 h-2 rounded-full bg-[#10b981] animate-pulse shrink-0" />
+            <span>
+              <span className="sm:hidden">Kos Wisdom × Modern AI</span>
+              <span className="hidden sm:inline">Ancient Clinical Wisdom × Modern AI</span>
+            </span>
           </span>
         </motion.div>
 
@@ -127,9 +130,9 @@ export function HeroSection() {
           initial={{ opacity: 0.001, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", bounce: 0, duration: 1, delay: 0.05 }}
-          className="flex flex-wrap items-center justify-center gap-x-3 sm:gap-x-5 gap-y-2"
+          className="flex flex-wrap items-center justify-center gap-x-2.5 sm:gap-x-5 gap-y-2"
         >
-          <h1 className="font-heading font-semibold text-[48px] sm:text-[74px] lg:text-[100px] leading-[1em] tracking-[-1.4px] text-[#1d1d1d]">
+          <h1 className="font-heading font-semibold text-[40px] sm:text-[74px] lg:text-[100px] leading-[1em] tracking-[-1.2px] sm:tracking-[-1.4px] text-[#1d1d1d]">
             Clinical
           </h1>
 
@@ -137,8 +140,9 @@ export function HeroSection() {
             initial={{ opacity: 0, scale: 0.75, rotate: -22 }}
             animate={{ opacity: 1, scale: 1, rotate: -10 }}
             whileHover={{ rotate: -2, scale: 1.07 }}
+            whileTap={{ rotate: 0, scale: 0.95 }}
             transition={{ type: "spring", stiffness: 260, damping: 18, delay: 0.12 }}
-            className="inline-flex items-center justify-center w-[56px] h-[56px] sm:w-[82px] sm:h-[82px] lg:w-[104px] lg:h-[104px] shrink-0 cursor-pointer"
+            className="inline-flex items-center justify-center w-[48px] h-[48px] sm:w-[82px] sm:h-[82px] lg:w-[104px] lg:h-[104px] shrink-0 cursor-pointer"
           >
             <img
               src="/images/hero-ai-badge.png"
@@ -147,7 +151,7 @@ export function HeroSection() {
             />
           </motion.div>
 
-          <h1 className="font-heading font-semibold text-[48px] sm:text-[74px] lg:text-[100px] leading-[1em] tracking-[-1.4px] text-[#1d1d1d]">
+          <h1 className="font-heading font-semibold text-[40px] sm:text-[74px] lg:text-[100px] leading-[1em] tracking-[-1.2px] sm:tracking-[-1.4px] text-[#1d1d1d]">
             Platform
           </h1>
         </motion.div>
@@ -157,18 +161,18 @@ export function HeroSection() {
           initial={{ opacity: 0.001, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", bounce: 0, duration: 1, delay: 0.15 }}
-          className="mt-5 font-display font-medium text-[17px] sm:text-[20px] leading-[1.35em] text-[#4d585f] max-w-[620px] mx-auto"
+          className="mt-4 sm:mt-5 font-display font-medium text-[15.5px] sm:text-[20px] leading-[1.4em] text-[#4d585f] max-w-[620px] mx-auto px-1"
         >
           The AI Management System for Modern Healthcare Clinics — operate
           smarter, faster, and more efficiently with specialized clinical workflows.
         </motion.p>
 
-        {/* CTAs */}
+        {/* CTAs (interactive touch & hover spring animations) */}
         <motion.div
           initial={{ opacity: 0.001, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", bounce: 0, duration: 1, delay: 0.25 }}
-          className="mt-8 flex flex-wrap items-center justify-center gap-4"
+          className="mt-7 sm:mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
         >
           <PrimaryGlassButton
             href="/demo"
@@ -187,7 +191,7 @@ export function HeroSection() {
           initial={{ opacity: 0.001, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ type: "spring", bounce: 0, duration: 1, delay: 0.32 }}
-          className="mt-7 flex flex-wrap items-center justify-center gap-x-5 gap-y-2.5 text-[#4d585f] font-display font-medium text-[15px] sm:text-[16px]"
+          className="mt-6 sm:mt-7 flex flex-wrap items-center justify-center gap-x-4 sm:gap-x-5 gap-y-2 text-[#4d585f] font-display font-medium text-[13.5px] sm:text-[16px]"
         >
           <div className="flex items-center gap-2">
             <img src="/images/icon-star.svg" alt="" className="w-[18px] h-[18px]" />
@@ -226,13 +230,13 @@ export function HeroSection() {
           </motion.div>
         </motion.div>
 
-        {/* Foreground Flower Hills (sit IN FRONT of the peeking dashboard at scrollY=0, glide down & fade out smoothly) */}
+        {/* Foreground Flower Hills (now active on mobile too, sliding smoothly down on scroll) */}
         <motion.div
           style={{
             y: hillsY,
             opacity: hillsOpacity,
           }}
-          className="hidden md:block absolute -top-[40px] lg:-top-[55px] left-1/2 -translate-x-1/2 w-[108vw] max-w-[1720px] z-20 pointer-events-none select-none will-change-[transform,opacity]"
+          className="block absolute -top-[16px] sm:-top-[28px] lg:-top-[55px] left-1/2 -translate-x-1/2 w-[155vw] sm:w-[126vw] md:w-[108vw] max-w-[1720px] z-20 pointer-events-none select-none will-change-[transform,opacity]"
         >
           <img
             src="/images/hero-hills.png"

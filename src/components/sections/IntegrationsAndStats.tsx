@@ -121,7 +121,7 @@ export function IntegrationsAndStats() {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
             {/* Top-Left Card */}
             <SpringReveal delay={0.05} className="lg:col-span-3">
-              <div className="rounded-[26px] bg-[#edf1f4] p-7 min-h-[240px] flex flex-col justify-between">
+              <div className="rounded-[24px] md:rounded-[26px] bg-[#edf1f4] p-5 md:p-7 min-h-[168px] md:min-h-[240px] flex flex-col justify-between transition-transform duration-300 active:scale-[0.99]">
                 <div className="flex items-start justify-between gap-3">
                   <span className="font-display font-medium text-[17px] text-[#1d1d1d]">
                     Hours saved
@@ -157,7 +157,7 @@ export function IntegrationsAndStats() {
 
             {/* Top-Right Card */}
             <SpringReveal delay={0.1} className="lg:col-span-3">
-              <div className="rounded-[26px] bg-gradient-to-br from-[#323232] to-[#000000] p-7 min-h-[240px] flex flex-col justify-between text-white">
+              <div className="rounded-[24px] md:rounded-[26px] bg-gradient-to-br from-[#323232] to-[#000000] p-5 md:p-7 min-h-[168px] md:min-h-[240px] flex flex-col justify-between text-white transition-transform duration-300 active:scale-[0.99]">
                 <div className="flex items-start justify-between gap-3">
                   <span className="font-display font-medium text-[17px] text-white/90">
                     Charting
@@ -181,10 +181,10 @@ export function IntegrationsAndStats() {
           </div>
 
           {/* Bottom 3 Staggered Cards */}
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6 items-start">
+          <div className="mt-6 md:mt-8 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 items-start">
             {/* Bottom-Left Dark Card */}
             <SpringReveal delay={0.12}>
-              <div className="rounded-[26px] bg-gradient-to-br from-[#323232] to-[#000000] p-7 min-h-[250px] flex flex-col justify-between text-white">
+              <div className="rounded-[24px] md:rounded-[26px] bg-gradient-to-br from-[#323232] to-[#000000] p-5 md:p-7 min-h-[168px] md:min-h-[250px] flex flex-col justify-between text-white">
                 <div className="flex items-start justify-between gap-3">
                   <span className="font-display font-medium text-[17px] text-white/90">
                     Admin burden
@@ -208,7 +208,7 @@ export function IntegrationsAndStats() {
 
             {/* Bottom-Center Blue Card */}
             <SpringReveal delay={0.18} className="md:mt-14">
-              <div className="rounded-[26px] bg-gradient-to-r from-[#406ae4] to-[#3b82f6] p-7 min-h-[250px] flex flex-col justify-between text-white shadow-[0_20px_50px_rgba(59,130,246,0.28)]">
+              <div className="rounded-[24px] md:rounded-[26px] bg-gradient-to-r from-[#406ae4] to-[#3b82f6] p-5 md:p-7 min-h-[168px] md:min-h-[250px] flex flex-col justify-between text-white shadow-[0_20px_50px_rgba(59,130,246,0.28)]">
                 <div className="flex items-start justify-between gap-3">
                   <span className="font-display font-medium text-[17px] text-white/95">
                     Specialty
@@ -232,7 +232,7 @@ export function IntegrationsAndStats() {
 
             {/* Bottom-Right Slate Card */}
             <SpringReveal delay={0.22}>
-              <div className="rounded-[26px] bg-[#edf1f4] p-7 min-h-[250px] flex flex-col justify-between">
+              <div className="rounded-[24px] md:rounded-[26px] bg-[#edf1f4] p-5 md:p-7 min-h-[168px] md:min-h-[250px] flex flex-col justify-between">
                 <div className="flex items-start justify-between gap-3">
                   <span className="font-display font-medium text-[17px] text-[#1d1d1d]">
                     Platform

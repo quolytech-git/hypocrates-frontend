@@ -36,7 +36,7 @@ const afterItems = [
 export function ClientsAndBeforeAfter() {
   const [manualMode, setManualMode] = useState<"before" | "after" | null>(null);
   const triggerRef = useRef<HTMLDivElement>(null);
-  const isTriggerInView = useInView(triggerRef, { amount: 0.7, once: true });
+  const isTriggerInView = useInView(triggerRef, { amount: 0.25, once: true });
   const mode = manualMode ?? (isTriggerInView ? "after" : "before");
 
   const handleSelect = (next: "before" | "after") => {

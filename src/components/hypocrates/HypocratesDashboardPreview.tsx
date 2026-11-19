@@ -289,32 +289,32 @@ export function HypocratesDashboardPreview({
   const isDarkSidebar = variant === "command";
 
   return (
-    <div className="w-full bg-white text-[#1d1d1d] grid grid-cols-1 md:grid-cols-12 min-h-[420px] text-left">
-      {/* Left Sidebar */}
+    <div className="w-full bg-white text-[#1d1d1d] grid grid-cols-1 md:grid-cols-12 md:min-h-[420px] text-left">
+      {/* Left Sidebar (compact horizontal pill bar on mobile, full sidebar on md+) */}
       <aside
-        className={`md:col-span-3 p-5 flex flex-col justify-between border-b md:border-b-0 md:border-r ${
+        className={`md:col-span-3 p-4 md:p-5 flex flex-col justify-between border-b md:border-b-0 md:border-r ${
           isDarkSidebar
             ? "bg-[#111315] text-white border-white/10"
             : "bg-[#f8fafc] text-[#1d1d1d] border-[#dde5ed]"
         }`}
       >
         <div>
-          <div className="flex items-center justify-between pb-5 gap-2">
+          <div className="flex items-center justify-between pb-3 md:pb-5 gap-2">
             {isDarkSidebar ? (
               <div className="inline-flex items-center gap-2.5">
-                <span className="h-11 w-11 rounded-xl bg-white p-1.5 flex items-center justify-center shadow-sm shrink-0">
+                <span className="h-9 w-9 md:h-11 md:w-11 rounded-xl bg-white p-1.5 flex items-center justify-center shadow-sm shrink-0">
                   <img
                     src="/images/hypocrates-logo.png"
                     alt="Hypocrates Logo"
                     className="h-full w-full object-contain"
                   />
                 </span>
-                <span className="font-heading font-bold tracking-[-0.03em] text-[20px] text-white leading-none">
+                <span className="font-heading font-bold tracking-[-0.03em] text-[18px] md:text-[20px] text-white leading-none">
                   Hypocrates
                 </span>
               </div>
             ) : (
-              <HypocratesLogo size="md" wordmarkClassName="!text-[#1d1d1d]" />
+              <HypocratesLogo size="sm" wordmarkClassName="!text-[#1d1d1d]" />
             )}
             <span
               className="relative flex h-2.5 w-2.5 shrink-0"
@@ -326,14 +326,14 @@ export function HypocratesDashboardPreview({
           </div>
 
           <p
-            className={`text-[11px] font-display font-semibold uppercase tracking-wider mb-2.5 ${
+            className={`hidden md:block text-[11px] font-display font-semibold uppercase tracking-wider mb-2.5 ${
               isDarkSidebar ? "text-white/45" : "text-[#4d585f]"
             }`}
           >
             Clinic Tenants
           </p>
 
-          <div className="space-y-1.5">
+          <div className="flex md:block overflow-x-auto no-scrollbar gap-1.5 md:space-y-1.5 pb-1 md:pb-0">
             {SIDEBAR_ITEMS.map((item) => {
               const active = activeKey === item.key;
               return (
@@ -341,19 +341,19 @@ export function HypocratesDashboardPreview({
                   key={item.key}
                   type="button"
                   onClick={() => setActiveKey(item.key)}
-                  className={`w-full text-left px-3.5 py-2.5 rounded-[12px] font-display font-semibold text-[13.5px] transition-colors cursor-pointer flex items-center justify-between ${
+                  className={`shrink-0 md:w-full text-left px-3 py-1.5 md:px-3.5 md:py-2.5 rounded-full md:rounded-[12px] font-display font-semibold text-[12.5px] md:text-[13.5px] transition-colors cursor-pointer flex items-center justify-between gap-2 whitespace-nowrap ${
                     active
                       ? isDarkSidebar
                         ? "bg-white text-[#1d1d1d]"
                         : "bg-[#3b82f6]/12 text-[#3b82f6]"
                       : isDarkSidebar
-                      ? "text-white/70 hover:bg-white/10 hover:text-white"
-                      : "text-[#4d585f] hover:bg-[#edf1f4] hover:text-[#1d1d1d]"
+                      ? "bg-white/5 md:bg-transparent text-white/75 hover:bg-white/10 hover:text-white"
+                      : "bg-white md:bg-transparent text-[#4d585f] hover:bg-[#edf1f4] hover:text-[#1d1d1d]"
                   }`}
                 >
                   <span>{item.label}</span>
                   {active && (
-                    <span className="w-2 h-2 rounded-full bg-[#10b981]" />
+                    <span className="w-2 h-2 rounded-full bg-[#10b981] shrink-0" />
                   )}
                 </button>
               );
@@ -362,7 +362,7 @@ export function HypocratesDashboardPreview({
         </div>
 
         <div
-          className={`mt-6 rounded-[16px] p-4 ${
+          className={`hidden md:block mt-6 rounded-[16px] p-4 ${
             isDarkSidebar
               ? "bg-white/8 border border-white/10"
               : "bg-white border border-[#dde5ed]"

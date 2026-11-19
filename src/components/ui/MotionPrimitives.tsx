@@ -13,19 +13,19 @@ interface SpringRevealProps {
 export function SpringReveal({
   children,
   delay = 0,
-  y = 20,
+  y = 18,
   className = "",
 }: SpringRevealProps) {
   return (
     <motion.div
       initial={{ opacity: 0.001, y }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.12 }}
+      viewport={{ once: true, amount: 0.06 }}
       transition={{
         type: "spring",
-        bounce: 0,
-        duration: 1,
-        delay,
+        stiffness: 210,
+        damping: 26,
+        delay: Math.min(delay, 0.25),
       }}
       className={className}
     >
@@ -33,4 +33,3 @@ export function SpringReveal({
     </motion.div>
   );
 }
-
