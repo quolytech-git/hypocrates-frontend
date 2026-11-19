@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Inter Display";
+  src: url("/fonts/inter-display-500.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter Display";
+  src: url("/fonts/inter-display-600.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter-400.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/inter-700.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  --fx-blue-primary: #406ae4;
+  --fx-blue-bright: #3b82f6;
+  --fx-blue-sky: #5290f4;
+  --fx-blue-glow: rgba(58, 119, 229, 0.5);
+  --fx-blue-ice: #e2f5ff;
+
+  --fx-white: #ffffff;
+  --fx-slate-light: #edf1f4;
+  --fx-border: #dde5ed;
+  --fx-border-soft: rgba(221, 229, 237, 0.7);
+  --fx-border-dash: #bababa;
+  --fx-text-muted: #4d585f;
+  --fx-text-dark: #1d1d1d;
+  --fx-dark-start: #323232;
+  --fx-black: #000000;
+
+  --fx-emerald: #10b981;
+  --fx-red: #f51c23;
+  --fx-amber: #ff8b06;
+}
+
+@layer base {
+  body {
+    font-family: "Inter Display", "Inter", sans-serif;
+    background-color: var(--fx-white);
+    color: var(--fx-text-dark);
+    font-feature-settings: "blwf" on, "cv09" on, "cv03" on, "cv04" on, "cv11" on;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-heading {
+    font-family: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
+    font-feature-settings: "blwf" on, "cv09" on, "cv03" on, "cv04" on, "cv11" on;
+  }
+}
+
+.font-heading {
+  font-family: var(--font-bricolage), "Bricolage Grotesque", sans-serif;
+}
+
+.font-display {
+  font-family: "Inter Display", "Inter", sans-serif;
+}
+
+/* Marquee Keyframes */
+@keyframes fx-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-fx-marquee {
+  display: flex;
+  width: max-content;
+  animation: fx-marquee 32s linear infinite;
+}
+
+.animate-fx-marquee-slow {
+  display: flex;
+  width: max-content;
+  animation: fx-marquee 44s linear infinite;
+}
+
+.animate-fx-marquee-pills {
+  display: flex;
+  width: max-content;
+  animation: fx-marquee 20s linear infinite;
+}
+
+.hover-pause:hover .animate-fx-marquee-slow {
+  animation-play-state: paused;
+}
+
+/* Hide scrollbars for horizontal carousel */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
