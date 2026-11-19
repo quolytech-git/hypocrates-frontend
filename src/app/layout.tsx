@@ -15,7 +15,11 @@ export const metadata: Metadata = {
   description:
     "The AI Management System for Modern Healthcare Clinics — operate smarter, faster, and more efficiently through AI-powered tools and specialized workflows.",
   icons: {
-    icon: "/images/favicon.png",
+    icon: [
+      { url: "/images/hypocrates-logo.png?v=3", type: "image/png" },
+    ],
+    shortcut: "/images/hypocrates-logo.png?v=3",
+    apple: "/images/hypocrates-logo.png?v=3",
   },
 };
 
