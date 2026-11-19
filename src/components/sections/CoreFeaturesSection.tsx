@@ -100,8 +100,8 @@ export function CoreFeaturesSection() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Card 1: HIPAA & Security */}
               <SpringReveal delay={0.05}>
-                <div className="rounded-[24px] bg-[#edf1f4] pt-8 pb-7 flex flex-col justify-between h-[390px] overflow-hidden">
-                  <h3 className="font-heading font-semibold text-[24px] text-center text-[#1d1d1d] px-6">
+                <div className="rounded-[24px] bg-[#edf1f4] pt-6 pb-5 flex flex-col justify-between min-h-[260px] md:h-[330px] overflow-hidden">
+                  <h3 className="font-heading font-semibold text-[22px] sm:text-[24px] text-center text-[#1d1d1d] px-6">
                     HIPAA &amp; GDPR safeguards
                   </h3>
 
@@ -115,7 +115,7 @@ export function CoreFeaturesSection() {
                         repeat: Infinity,
                         ease: "easeInOut",
                       }}
-                      className="h-[190px] w-auto object-contain drop-shadow-[0_18px_28px_rgba(64,106,228,0.22)]"
+                      className="h-[115px] md:h-[150px] w-auto object-contain drop-shadow-[0_18px_28px_rgba(64,106,228,0.22)]"
                     />
                   </div>
 
@@ -136,7 +136,7 @@ export function CoreFeaturesSection() {
 
               {/* Card 2: Clinic Analytics */}
               <SpringReveal delay={0.1}>
-                <div className="relative rounded-[24px] overflow-hidden pt-8 px-6 pb-0 flex flex-col justify-between h-[390px]">
+                <div className="relative rounded-[24px] overflow-hidden pt-6 px-5 sm:px-6 pb-0 flex flex-col justify-between min-h-[250px] md:h-[330px]">
                   <img
                     src="/images/feature-market-bg.jpg"
                     alt=""
@@ -182,7 +182,7 @@ export function CoreFeaturesSection() {
 
             {/* Card 4: Multi-Specialty Tenants (Wide bottom-left) */}
             <SpringReveal delay={0.2}>
-              <div className="relative rounded-[24px] overflow-hidden pt-8 px-6 md:px-10 pb-8 flex flex-col justify-between min-h-[340px]">
+              <div className="relative rounded-[24px] overflow-hidden pt-6 px-5 md:px-10 pb-6 flex flex-col justify-between min-h-[220px] md:min-h-[265px]">
                 <img
                   src="/images/feature-portfolio-bg.jpg"
                   alt=""
@@ -217,7 +217,7 @@ export function CoreFeaturesSection() {
           <div className="lg:col-span-4 flex flex-col gap-6">
             {/* Card 3: Slot-cycling AI Engines */}
             <SpringReveal delay={0.15} className="flex-1">
-              <div className="rounded-[24px] bg-black p-8 flex flex-col justify-between h-[420px] lg:h-[450px] overflow-hidden text-center">
+              <div className="rounded-[24px] bg-black p-6 sm:p-7 flex flex-col justify-between min-h-[250px] sm:h-[310px] lg:h-[360px] overflow-hidden text-center">
                 <h3 className="font-heading font-semibold text-[24px] text-white">
                   Integrated AI ecosystem
                 </h3>
@@ -276,7 +276,7 @@ export function CoreFeaturesSection() {
 
             {/* Card 5: Smart Clinical Alerts */}
             <SpringReveal delay={0.25}>
-              <div className="rounded-[24px] bg-[#edf1f4] p-7 flex flex-col justify-between h-[300px] overflow-hidden">
+              <div className="rounded-[24px] bg-[#edf1f4] p-6 flex flex-col justify-between h-[245px] md:h-[265px] overflow-hidden">
                 <h3 className="font-heading font-semibold text-[24px] text-center text-[#1d1d1d]">
                   Smart clinical alerts
                 </h3>

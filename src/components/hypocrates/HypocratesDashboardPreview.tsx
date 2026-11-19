@@ -289,7 +289,7 @@ export function HypocratesDashboardPreview({
   const isDarkSidebar = variant === "command";
 
   return (
-    <div className="w-full bg-white text-[#1d1d1d] grid grid-cols-1 md:grid-cols-12 md:min-h-[420px] text-left">
+    <div className="w-full bg-white text-[#1d1d1d] grid grid-cols-1 md:grid-cols-12 md:min-h-[340px] text-left">
       {/* Left Sidebar (compact horizontal pill bar on mobile, full sidebar on md+) */}
       <aside
         className={`md:col-span-3 p-4 md:p-5 flex flex-col justify-between border-b md:border-b-0 md:border-r ${
@@ -385,7 +385,7 @@ export function HypocratesDashboardPreview({
       </aside>
 
       {/* Main Content */}
-      <div className="md:col-span-9 p-5 sm:p-7 bg-white flex flex-col justify-between gap-6 overflow-hidden">
+      <div className="md:col-span-9 p-4 sm:p-6 bg-white flex flex-col justify-between gap-4 overflow-hidden">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeKey}
@@ -393,20 +393,20 @@ export function HypocratesDashboardPreview({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="flex flex-col justify-between gap-6 flex-1"
+            className="flex flex-col justify-between gap-4 flex-1"
           >
             {/* Top Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-[#edf1f4]">
+        <div className="flex flex-wrap items-center justify-between gap-2 pb-3 border-b border-[#edf1f4]">
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded-full bg-[#edf1f4] font-display font-semibold text-[11.5px] text-[#3b82f6]">
+              <span className="px-2.5 py-0.5 rounded-full bg-[#edf1f4] font-display font-semibold text-[11px] text-[#3b82f6]">
                 {snap.label}
               </span>
-              <span className="font-display font-medium text-[12.5px] text-[#4d585f]">
+              <span className="font-display font-medium text-[12px] text-[#4d585f]">
                 {snap.activeBranch}
               </span>
             </div>
-            <h3 className="mt-1.5 font-heading font-semibold text-[22px] sm:text-[26px] tracking-[-0.5px] text-[#1d1d1d]">
+            <h3 className="mt-1 font-heading font-semibold text-[19px] sm:text-[23px] tracking-[-0.5px] text-[#1d1d1d]">
               {variant === "command"
                 ? "Clinical Command Center"
                 : "AI Orchestrator Intelligence"}
@@ -419,80 +419,80 @@ export function HypocratesDashboardPreview({
                 href={livePortal.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-3 py-1.5 rounded-full bg-[#3b82f6]/10 hover:bg-[#3b82f6] hover:text-white text-[#3b82f6] font-display font-semibold text-[12px] transition-colors"
+                className="px-3 py-1 rounded-full bg-[#3b82f6]/10 hover:bg-[#3b82f6] hover:text-white text-[#3b82f6] font-display font-semibold text-[11.5px] transition-colors"
               >
                 Open Live Demo ↗
               </a>
             )}
-            <span className="px-3 py-1.5 rounded-full bg-[#10b981]/12 text-[#10b981] font-display font-semibold text-[12px]">
+            <span className="px-2.5 py-1 rounded-full bg-[#10b981]/12 text-[#10b981] font-display font-semibold text-[11.5px]">
               ● Orchestrator Online
             </span>
           </div>
         </div>
 
         {/* 4 KPI Cards */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-          <div className="rounded-[16px] bg-[#edf1f4] p-4">
-            <div className="font-display font-medium text-[12px] text-[#4d585f]">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+          <div className="rounded-[14px] bg-[#edf1f4] p-3">
+            <div className="font-display font-medium text-[11.5px] text-[#4d585f]">
               Time Saved / MD
             </div>
-            <div className="mt-1.5 font-heading font-semibold text-[22px] text-[#1d1d1d]">
+            <div className="mt-1 font-heading font-semibold text-[18px] sm:text-[20px] text-[#1d1d1d]">
               {snap.hoursSaved}
             </div>
           </div>
-          <div className="rounded-[16px] bg-[#edf1f4] p-4">
-            <div className="font-display font-medium text-[12px] text-[#4d585f]">
+          <div className="rounded-[14px] bg-[#edf1f4] p-3">
+            <div className="font-display font-medium text-[11.5px] text-[#4d585f]">
               SOAP Draft Time
             </div>
-            <div className="mt-1.5 font-heading font-semibold text-[22px] text-[#3b82f6]">
+            <div className="mt-1 font-heading font-semibold text-[18px] sm:text-[20px] text-[#3b82f6]">
               {snap.soapTurnaround}
             </div>
           </div>
-          <div className="rounded-[16px] bg-[#edf1f4] p-4">
-            <div className="font-display font-medium text-[12px] text-[#4d585f]">
+          <div className="rounded-[14px] bg-[#edf1f4] p-3">
+            <div className="font-display font-medium text-[11.5px] text-[#4d585f]">
               Claim Pre-Check
             </div>
-            <div className="mt-1.5 font-heading font-semibold text-[22px] text-[#10b981]">
+            <div className="mt-1 font-heading font-semibold text-[18px] sm:text-[20px] text-[#10b981]">
               {snap.claimAccuracy}
             </div>
           </div>
-          <div className="rounded-[16px] bg-[#1d1d1d] text-white p-4">
-            <div className="font-display font-medium text-[12px] text-white/70">
+          <div className="rounded-[14px] bg-[#1d1d1d] text-white p-3">
+            <div className="font-display font-medium text-[11.5px] text-white/70">
               Platform SLA
             </div>
-            <div className="mt-1.5 font-heading font-semibold text-[22px]">
+            <div className="mt-1 font-heading font-semibold text-[18px] sm:text-[20px]">
               99.9%
             </div>
           </div>
         </div>
 
         {/* Lower Split: Patient Queue + Live AI Feed */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-4">
-          <div className="lg:col-span-7 rounded-[18px] border border-[#dde5ed] p-4">
-            <div className="flex items-center justify-between mb-3">
-              <span className="font-heading font-semibold text-[15px] text-[#1d1d1d]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-3.5">
+          <div className="lg:col-span-7 rounded-[16px] border border-[#dde5ed] p-3.5">
+            <div className="flex items-center justify-between mb-2">
+              <span className="font-heading font-semibold text-[14px] text-[#1d1d1d]">
                 Live Clinical Schedule
               </span>
-              <span className="font-display text-[12px] text-[#4d585f]">
+              <span className="font-display text-[11.5px] text-[#4d585f]">
                 Branch Sync Active
               </span>
             </div>
-            <div className="space-y-2.5">
-              {snap.patientQueue.map((row) => (
+            <div className="space-y-2">
+              {snap.patientQueue.slice(0, 2).map((row) => (
                 <div
                   key={row.patient}
-                  className="flex flex-wrap items-center justify-between gap-2 rounded-[12px] bg-[#f8fafc] px-3.5 py-2.5 border border-[#edf1f4]"
+                  className="flex flex-wrap items-center justify-between gap-2 rounded-[10px] bg-[#f8fafc] px-3 py-2 border border-[#edf1f4]"
                 >
                   <div>
-                    <div className="font-display font-semibold text-[13.5px] text-[#1d1d1d]">
+                    <div className="font-display font-semibold text-[13px] text-[#1d1d1d]">
                       {row.time} • {row.patient}
                     </div>
-                    <div className="font-display text-[12px] text-[#4d585f]">
+                    <div className="font-display text-[11.5px] text-[#4d585f]">
                       {row.procedure}
                     </div>
                   </div>
                   <span
-                    className={`px-2.5 py-1 rounded-full font-display font-semibold text-[11px] ${
+                    className={`px-2 py-0.5 rounded-full font-display font-semibold text-[10.5px] ${
                       row.statusTone === "emerald"
                         ? "bg-[#10b981]/15 text-[#10b981]"
                         : row.statusTone === "blue"
@@ -507,23 +507,23 @@ export function HypocratesDashboardPreview({
             </div>
           </div>
 
-          <div className="lg:col-span-5 rounded-[18px] bg-[#edf1f4] p-4 flex flex-col justify-between">
+          <div className="hidden sm:flex lg:col-span-5 rounded-[16px] bg-[#edf1f4] p-3.5 flex-col justify-between">
             <div>
-              <span className="font-heading font-semibold text-[15px] text-[#1d1d1d]">
+              <span className="font-heading font-semibold text-[14px] text-[#1d1d1d]">
                 AI Agent Orchestrator
               </span>
-              <ul className="mt-3 space-y-2.5">
-                {snap.aiFeed.map((msg) => (
+              <ul className="mt-2 space-y-2">
+                {snap.aiFeed.slice(0, 2).map((msg) => (
                   <li
                     key={msg}
-                    className="rounded-[12px] bg-white px-3.5 py-2.5 font-display font-medium text-[12.5px] leading-[1.4em] text-[#4d585f] border border-[#dde5ed]/70"
+                    className="rounded-[10px] bg-white px-3 py-2 font-display font-medium text-[12px] leading-[1.35em] text-[#4d585f] border border-[#dde5ed]/70"
                   >
                     {msg}
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="mt-3 pt-2.5 border-t border-[#dde5ed] flex items-center justify-between text-[11.5px] font-display font-semibold text-[#4d585f]">
+            <div className="mt-2.5 pt-2 border-t border-[#dde5ed] flex items-center justify-between text-[11px] font-display font-semibold text-[#4d585f]">
               <span>Clinical • Reception • Finance AI</span>
               <span className="text-[#3b82f6]">Synced</span>
             </div>

@@ -175,17 +175,17 @@ export function ClientsAndBeforeAfter() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.35 }}
-                  className="rounded-[24px] bg-[#edf1f4] p-7 md:p-12 grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
+                  className="rounded-[24px] bg-[#edf1f4] p-5 sm:p-7 md:p-9 grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-7 items-center"
                 >
                   <div className="md:col-span-7">
-                    <h3 className="font-heading font-semibold text-[26px] md:text-[32px] leading-[1.2em] text-[#1d1d1d] max-w-[400px]">
+                    <h3 className="font-heading font-semibold text-[23px] md:text-[30px] leading-[1.2em] text-[#1d1d1d] max-w-[400px]">
                       Challenges of legacy clinic software today
                     </h3>
-                    <ul className="mt-7 space-y-4">
+                    <ul className="mt-4 sm:mt-6 space-y-2.5 sm:space-y-3.5">
                       {beforeItems.map((item) => (
                         <li
                           key={item}
-                          className="flex items-start gap-3 font-display font-medium text-[16px] leading-[1.4em] text-[#4d585f]"
+                          className="flex items-start gap-2.5 font-display font-medium text-[14.5px] sm:text-[15.5px] leading-[1.4em] text-[#4d585f]"
                         >
                           <img
                             src="/images/icon-red-x.svg"
@@ -198,20 +198,20 @@ export function ClientsAndBeforeAfter() {
                     </ul>
                   </div>
 
-                  <div className="md:col-span-5 flex flex-col gap-4">
-                    <div className="rounded-[20px] bg-[#ff0d0d]/[0.05] border border-[#ff0d0d]/30 p-6">
-                      <h4 className="font-heading font-semibold text-[32px] leading-[1.1em] text-[#1d1d1d]">
+                  <div className="md:col-span-5 grid grid-cols-2 md:grid-cols-1 gap-3">
+                    <div className="rounded-[18px] bg-[#ff0d0d]/[0.05] border border-[#ff0d0d]/30 p-4 sm:p-5">
+                      <h4 className="font-heading font-semibold text-[26px] sm:text-[30px] leading-[1.1em] text-[#1d1d1d]">
                         40%
                       </h4>
-                      <p className="mt-2 font-display font-medium text-[16px] text-[#4d585f]">
+                      <p className="mt-1 font-display font-medium text-[13.5px] sm:text-[15px] text-[#4d585f]">
                         Workday lost to admin &amp; screen time
                       </p>
                     </div>
-                    <div className="rounded-[20px] bg-[#ff0d0d]/[0.05] border border-[#ff0d0d]/30 p-6">
-                      <h4 className="font-heading font-semibold text-[32px] leading-[1.1em] text-[#1d1d1d]">
+                    <div className="rounded-[18px] bg-[#ff0d0d]/[0.05] border border-[#ff0d0d]/30 p-4 sm:p-5">
+                      <h4 className="font-heading font-semibold text-[26px] sm:text-[30px] leading-[1.1em] text-[#1d1d1d]">
                         Manual
                       </h4>
-                      <p className="mt-2 font-display font-medium text-[16px] text-[#4d585f]">
+                      <p className="mt-1 font-display font-medium text-[13.5px] sm:text-[15px] text-[#4d585f]">
                         SOAP charting &amp; claim validation
                       </p>
                     </div>
@@ -224,7 +224,7 @@ export function ClientsAndBeforeAfter() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.35 }}
-                  className="relative rounded-[24px] overflow-hidden bg-[#0a0f0d] p-7 md:p-12 grid grid-cols-1 md:grid-cols-12 gap-8 items-center"
+                  className="relative rounded-[24px] overflow-hidden bg-[#0a0f0d] p-5 sm:p-7 md:p-9 grid grid-cols-1 md:grid-cols-12 gap-5 md:gap-7 items-center"
                 >
                   <img
                     src="/images/prefooter-bg.jpg"
@@ -240,14 +240,14 @@ export function ClientsAndBeforeAfter() {
                   />
 
                   <div className="relative z-10 md:col-span-7">
-                    <h3 className="font-heading font-semibold text-[26px] md:text-[32px] leading-[1.2em] text-white max-w-[400px]">
+                    <h3 className="font-heading font-semibold text-[23px] md:text-[30px] leading-[1.2em] text-white max-w-[400px]">
                       AI-powered clinical operations in one environment
                     </h3>
-                    <ul className="mt-7 space-y-4">
+                    <ul className="mt-4 sm:mt-6 space-y-2.5 sm:space-y-3.5">
                       {afterItems.map((item) => (
                         <li
                           key={item}
-                          className="flex items-start gap-3 font-display font-medium text-[16px] leading-[1.4em] text-white/85"
+                          className="flex items-start gap-2.5 font-display font-medium text-[14.5px] sm:text-[15.5px] leading-[1.4em] text-white/85"
                         >
                           <img
                             src="/images/icon-green-check.svg"
@@ -260,20 +260,20 @@ export function ClientsAndBeforeAfter() {
                     </ul>
                   </div>
 
-                  <div className="relative z-10 md:col-span-5 flex flex-col gap-4">
-                    <div className="rounded-[20px] bg-[#10b981]/[0.1] border border-[#10b981]/30 backdrop-blur-md p-6">
-                      <h4 className="font-heading font-semibold text-[32px] leading-[1.1em] text-white">
+                  <div className="relative z-10 md:col-span-5 grid grid-cols-2 md:grid-cols-1 gap-3">
+                    <div className="rounded-[18px] bg-[#10b981]/[0.1] border border-[#10b981]/30 backdrop-blur-md p-4 sm:p-5">
+                      <h4 className="font-heading font-semibold text-[26px] sm:text-[30px] leading-[1.1em] text-white">
                         12+ hrs
                       </h4>
-                      <p className="mt-2 font-display font-medium text-[16px] text-white/75">
+                      <p className="mt-1 font-display font-medium text-[13.5px] sm:text-[15px] text-white/75">
                         Reclaimed weekly per practitioner
                       </p>
                     </div>
-                    <div className="rounded-[20px] bg-[#10b981]/[0.1] border border-[#10b981]/30 backdrop-blur-md p-6">
-                      <h4 className="font-heading font-semibold text-[32px] leading-[1.1em] text-white">
+                    <div className="rounded-[18px] bg-[#10b981]/[0.1] border border-[#10b981]/30 backdrop-blur-md p-4 sm:p-5">
+                      <h4 className="font-heading font-semibold text-[26px] sm:text-[30px] leading-[1.1em] text-white">
                         68%
                       </h4>
-                      <p className="mt-2 font-display font-medium text-[16px] text-white/75">
+                      <p className="mt-1 font-display font-medium text-[13.5px] sm:text-[15px] text-white/75">
                         Faster clinical chart turnaround
                       </p>
                     </div>

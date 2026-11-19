@@ -70,11 +70,11 @@ export function SpecializedClinicsSection({
             return (
               <div
                 key={slug}
-                className="snap-start shrink-0 w-[84vw] max-w-[345px] rounded-[24px] bg-[#edf1f4] border border-[#dde5ed] p-5 sm:p-7 flex flex-col justify-between transition-transform duration-300 active:scale-[0.99]"
+                className="snap-start shrink-0 w-[82vw] max-w-[330px] rounded-[24px] bg-[#edf1f4] border border-[#dde5ed] p-5 flex flex-col justify-between transition-transform duration-300 active:scale-[0.99]"
               >
                 <div>
                   <div className="flex items-center justify-between gap-2">
-                    <span className="inline-block px-3 py-1 rounded-full bg-white text-[#3b82f6] font-display font-semibold text-[12px]">
+                    <span className="inline-block px-3 py-1 rounded-full bg-white text-[#3b82f6] font-display font-semibold text-[11.5px]">
                       Sub-Tenant Solution
                     </span>
                     {livePortal && (
@@ -90,7 +90,7 @@ export function SpecializedClinicsSection({
                       href={livePortal.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="mt-4 block rounded-[16px] overflow-hidden border border-[#dde5ed] bg-[#0e1116] h-[132px] group"
+                      className="mt-3 block rounded-[14px] overflow-hidden border border-[#dde5ed] bg-[#0e1116] h-[108px] group"
                     >
                       <img
                         src={livePortal.screenshot}
@@ -100,37 +100,32 @@ export function SpecializedClinicsSection({
                     </a>
                   )}
 
-                  <h3 className="mt-4 font-heading font-semibold text-[24px] text-[#1d1d1d]">
+                  <h3 className="mt-3.5 font-heading font-semibold text-[21px] text-[#1d1d1d]">
                     {item.title}
                   </h3>
-                  <p className="mt-2 font-display font-medium text-[15px] leading-[1.45em] text-[#4d585f]">
+                  <p className="mt-1.5 font-display font-medium text-[14px] leading-[1.4em] text-[#4d585f] line-clamp-2">
                     {item.showcaseDesc}
                   </p>
 
-                  <div className="mt-5 pt-4 border-t border-[#dde5ed]">
-                    <div className="font-display font-semibold text-[12px] uppercase tracking-wider text-[#1d1d1d] mb-2.5">
-                      Key Features
-                    </div>
-                    <ul className="space-y-2">
-                      {item.showcaseFeatures.map((feat) => (
-                        <li
-                          key={feat}
-                          className="flex items-start gap-2 font-display font-medium text-[14px] text-[#4d585f]"
-                        >
-                          <span className="text-[#10b981] font-bold">✓</span>
-                          <span>{feat}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <ul className="mt-3.5 pt-3 border-t border-[#dde5ed] space-y-1.5">
+                    {item.showcaseFeatures.slice(0, 2).map((feat) => (
+                      <li
+                        key={feat}
+                        className="flex items-start gap-2 font-display font-medium text-[13px] text-[#4d585f]"
+                      >
+                        <span className="text-[#10b981] font-bold">✓</span>
+                        <span>{feat}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
 
-                <div className="mt-6 flex flex-col gap-2">
+                <div className="mt-4 flex items-center gap-2">
                   <Link
                     href={`/solutions/${slug}`}
-                    className="inline-flex items-center justify-between rounded-full bg-white hover:bg-[#1d1d1d] hover:text-white border border-[#dde5ed] px-5 py-3 font-display font-semibold text-[14px] text-[#1d1d1d] transition-colors"
+                    className="flex-1 inline-flex items-center justify-between rounded-full bg-white hover:bg-[#1d1d1d] hover:text-white border border-[#dde5ed] px-4 py-2.5 font-display font-semibold text-[13px] text-[#1d1d1d] transition-colors truncate"
                   >
-                    <span>{item.ctaText}</span>
+                    <span className="truncate">{item.shortTitle} Details</span>
                     <span>→</span>
                   </Link>
                   {livePortal && (
@@ -138,9 +133,9 @@ export function SpecializedClinicsSection({
                       href={livePortal.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-between rounded-full bg-[#3b82f6]/10 hover:bg-[#3b82f6] hover:text-white border border-[#3b82f6]/25 px-5 py-2.5 font-display font-semibold text-[13px] text-[#3b82f6] transition-colors"
+                      className="shrink-0 inline-flex items-center gap-1 rounded-full bg-[#3b82f6] hover:bg-[#2563eb] text-white px-3.5 py-2.5 font-display font-semibold text-[12.5px] transition-colors"
                     >
-                      <span>Open Live Dashboard</span>
+                      <span>Live</span>
                       <span>↗</span>
                     </a>
                   )}

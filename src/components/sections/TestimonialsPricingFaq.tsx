@@ -130,20 +130,20 @@ export function TestimonialsPricingFaq() {
             {[...testimonials, ...testimonials].map((item, idx) => (
               <div
                 key={idx}
-                className="mx-2.5 shrink-0 w-[330px] sm:w-[370px] rounded-[24px] bg-white p-7 shadow-[0_14px_40px_rgba(0,0,0,0.06)] flex flex-col justify-between min-h-[270px]"
+                className="mx-2 shrink-0 w-[290px] sm:w-[345px] rounded-[22px] bg-white p-5 sm:p-6 shadow-[0_14px_40px_rgba(0,0,0,0.06)] flex flex-col justify-between min-h-[210px]"
               >
                 <div>
                   <img
                     src="/images/stars-5.svg"
                     alt="5 out of 5 stars"
-                    className="h-[18px] w-auto"
+                    className="h-[16px] w-auto"
                   />
-                  <p className="mt-5 font-display font-medium text-[17px] leading-[1.45em] text-[#1d1d1d]">
+                  <p className="mt-3.5 font-display font-medium text-[15.5px] leading-[1.42em] text-[#1d1d1d]">
                     {item.quote}
                   </p>
                 </div>
 
-                <div className="mt-7 flex items-center gap-3.5">
+                <div className="mt-5 flex items-center gap-3">
                   <img
                     src={item.avatar}
                     alt={item.name}
