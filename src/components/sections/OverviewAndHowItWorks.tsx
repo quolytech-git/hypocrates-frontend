@@ -8,44 +8,34 @@ import {
   SecondaryPillButton,
 } from "@/components/ui/ActionButtons";
 import { SpringReveal } from "@/components/ui/MotionPrimitives";
+import { HypocratesDashboardPreview } from "@/components/hypocrates/HypocratesDashboardPreview";
+import { workflowSteps } from "@/lib/hypocrates-data";
 
 const overviewCards = [
   {
     icon: "/images/icon-rocket.svg",
-    title: "All your work in one place:",
-    desc: "Bring all your tasks, projects, and updates together in one clear, unified view.",
+    title: "Clinic Management System:",
+    desc: "Multi-location scheduling, inventory tracking, and role-based staff workspaces in one view.",
   },
   {
     icon: "/images/icon-overview-bolt.svg",
-    title: "Make progress faster:",
-    desc: "Access key insights instantly and act without delays or unnecessary steps.",
+    title: "Patient Experience Platform:",
+    desc: "Delight patients with online booking, automated reminders, and a modern intake portal.",
   },
   {
     icon: "/images/icon-bulb.svg",
-    title: "Built for better focus:",
-    desc: "A clean interface that helps you stay focused and keep everything simple.",
+    title: "AI Healthcare Assistant:",
+    desc: "Ambient SOAP drafting, ICD-10 coding, and claims validation save 12+ hours weekly per doctor.",
   },
 ];
 
-const steps = [
-  {
-    id: "Step 01",
-    image: "/images/step-1.png",
-    title: "Connect your accounts",
-    desc: "Securely link your bank, trading, and investment accounts.",
-  },
-  {
-    id: "Step 02",
-    image: "/images/step-2.png",
-    title: "Analyze your data",
-    desc: "AI processes your data to generate clear insights.",
-  },
-  {
-    id: "Step 03",
-    image: "/images/step-3.png",
-    title: "Get smart insights",
-    desc: "Receive real-time recommendations to optimize your portfolio.",
-  },
+const stepVisuals = [
+  "/images/step-1.png",
+  "/images/step-2.png",
+  "/images/step-3.png",
+  "/images/step-1.png",
+  "/images/step-2.png",
+  "/images/step-3.png",
 ];
 
 export function OverviewAndHowItWorks() {
@@ -63,7 +53,7 @@ export function OverviewAndHowItWorks() {
       setProgress(pct);
 
       if (elapsed >= duration) {
-        setActiveStep((prev) => (prev + 1) % steps.length);
+        setActiveStep((prev) => (prev + 1) % workflowSteps.length);
         start = performance.now();
         setProgress(0);
       }
@@ -83,7 +73,6 @@ export function OverviewAndHowItWorks() {
     <>
       {/* Platform Overview Section */}
       <section className="relative overflow-hidden py-24 md:py-32">
-        {/* Mountain / Sky Background with Top & Bottom White Fades */}
         <div className="absolute inset-0 pointer-events-none select-none">
           <img
             src="/images/overview-bg.jpg"
@@ -100,23 +89,23 @@ export function OverviewAndHowItWorks() {
         </div>
 
         <div className="relative z-10 max-w-[1160px] mx-auto px-5">
-          <SpringReveal className="text-center max-w-[660px] mx-auto">
-            <PreTitleBadge text="Platform overview" variant="white" />
+          <SpringReveal className="text-center max-w-[680px] mx-auto">
+            <PreTitleBadge text="What Hypocrates does" variant="white" />
             <h2 className="mt-5 font-heading font-semibold text-[34px] md:text-[48px] leading-[1.2em] tracking-[-1px] text-[#1d1d1d]">
-              See your financial intelligence in action
+              See your AI clinic operating system in action
             </h2>
             <p className="mt-4 font-display font-medium text-[18px] leading-[1.4em] text-[#4d585f]">
-              Explore a real-time dashboard that brings your portfolio,
-              insights, and risk analysis together in one clear view.
+              Explore a real-time multi-tenant dashboard unifying clinical notes,
+              patient intake, smart routing, and billing audits.
             </p>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
               <PrimaryGlassButton
-                href="/features"
-                label="Explore features"
+                href="/platform"
+                label="Explore platform"
                 variant="blue"
               />
               <SecondaryPillButton
-                href="/request-demo"
+                href="/demo"
                 label="Try the live demo"
                 variant="dark"
               />
@@ -126,11 +115,7 @@ export function OverviewAndHowItWorks() {
           {/* Dashboard Preview */}
           <SpringReveal delay={0.15} className="mt-14 max-w-[1040px] mx-auto">
             <div className="rounded-[20px] md:rounded-[26px] border border-[#bababa] overflow-hidden bg-white shadow-[0_30px_80px_rgba(0,0,0,0.16)]">
-              <img
-                src="/images/overview-dashboard.jpg"
-                alt="Market Intelligence Center Dashboard"
-                className="w-full h-auto block"
-              />
+              <HypocratesDashboardPreview variant="intelligence" />
             </div>
           </SpringReveal>
 
@@ -159,53 +144,53 @@ export function OverviewAndHowItWorks() {
         </div>
       </section>
 
-      {/* How It Works Section */}
+      {/* Automated Clinical Journey Section */}
       <section id="how-it-works" className="py-20 md:py-28 bg-white">
         <div className="max-w-[1160px] mx-auto px-5 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           {/* Left Column */}
           <SpringReveal className="lg:col-span-5">
-            <PreTitleBadge text="How it works" variant="slate" />
+            <PreTitleBadge text="The automated clinical journey" variant="slate" />
             <h2 className="mt-5 font-heading font-semibold text-[34px] md:text-[48px] leading-[1.15em] tracking-[-1px] text-[#1d1d1d]">
-              Start investing in minutes
+              From patient booking to automated billing
             </h2>
             <p className="mt-4 font-display font-medium text-[18px] leading-[1.4em] text-[#4d585f]">
-              Connect your accounts, let AI analyze your data, and get clear
-              insights to invest with confidence.
+              Follow how Reception AI, Clinical AI, and Finance AI coordinate
+              every step of the patient visit in one seamless timeline.
             </p>
 
             <div className="mt-10 grid grid-cols-2 gap-6">
               <div>
                 <h3 className="font-heading font-semibold text-[28px] md:text-[32px] leading-[1.2em] text-[#1d1d1d]">
-                  100%
+                  &lt; 1 Min
                 </h3>
                 <p className="mt-1.5 font-display font-medium text-[15px] leading-[1.4em] text-[#4d585f]">
-                  Secure, encrypted data protection
+                  Ambient SOAP note drafting per patient
                 </p>
               </div>
               <div>
                 <h3 className="font-heading font-semibold text-[28px] md:text-[32px] leading-[1.2em] text-[#1d1d1d]">
-                  2 Minutes
+                  6 Steps
                 </h3>
                 <p className="mt-1.5 font-display font-medium text-[15px] leading-[1.4em] text-[#4d585f]">
-                  Set up to connect and begin instantly
+                  End-to-end automated clinical workflow
                 </p>
               </div>
             </div>
           </SpringReveal>
 
-          {/* Right Column: Interactive Step Switcher */}
+          {/* Right Column: Interactive 6-Step Switcher */}
           <SpringReveal delay={0.12} className="lg:col-span-7">
             <div className="flex flex-col items-center">
               {/* Step Tabs */}
-              <div className="inline-flex items-center gap-2.5 px-5 py-2.5 rounded-t-[20px] border border-b-0 border-[#dde5ed] bg-white">
-                {steps.map((step, idx) => {
+              <div className="inline-flex flex-wrap justify-center items-center gap-2 px-4 py-2.5 rounded-t-[20px] border border-b-0 border-[#dde5ed] bg-white">
+                {workflowSteps.map((step, idx) => {
                   const isActive = idx === activeStep;
                   return (
                     <button
                       key={step.id}
                       type="button"
                       onClick={() => selectStep(idx)}
-                      className={`relative overflow-hidden px-4 py-1.5 rounded-full font-display font-semibold text-[14px] transition-colors cursor-pointer ${
+                      className={`relative overflow-hidden px-3.5 py-1.5 rounded-full font-display font-semibold text-[13px] transition-colors cursor-pointer ${
                         isActive
                           ? "bg-[#edf1f4] text-white"
                           : "bg-[#edf1f4] text-[#4d585f] hover:text-[#1d1d1d]"
@@ -234,25 +219,28 @@ export function OverviewAndHowItWorks() {
                 <div className="rounded-[22px] bg-[#edf1f4] p-7 md:p-10 text-center min-h-[340px] flex flex-col items-center justify-between">
                   <AnimatePresence mode="wait">
                     <motion.div
-                      key={steps[activeStep].id}
+                      key={workflowSteps[activeStep].id}
                       initial={{ opacity: 0, y: 12 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -12 }}
                       transition={{ duration: 0.35 }}
                       className="w-full flex flex-col items-center"
                     >
-                      <div className="w-full max-w-[480px] h-[200px] flex items-center justify-center">
+                      <div className="w-full max-w-[440px] h-[180px] flex items-center justify-center">
                         <img
-                          src={steps[activeStep].image}
-                          alt={steps[activeStep].title}
+                          src={stepVisuals[activeStep]}
+                          alt={workflowSteps[activeStep].title}
                           className="max-h-full w-auto object-contain"
                         />
                       </div>
-                      <h4 className="mt-5 font-heading font-semibold text-[22px] md:text-[24px] text-[#1d1d1d]">
-                        {steps[activeStep].title}
+                      <span className="mt-4 px-3 py-1 rounded-full bg-white text-[#3b82f6] font-display font-semibold text-[12px]">
+                        {workflowSteps[activeStep].meta}
+                      </span>
+                      <h4 className="mt-3 font-heading font-semibold text-[22px] md:text-[24px] text-[#1d1d1d]">
+                        {workflowSteps[activeStep].title}
                       </h4>
                       <p className="mt-2 font-display font-medium text-[16px] text-[#4d585f]">
-                        {steps[activeStep].desc}
+                        {workflowSteps[activeStep].description}
                       </p>
                     </motion.div>
                   </AnimatePresence>
@@ -265,4 +253,3 @@ export function OverviewAndHowItWorks() {
     </>
   );
 }
-

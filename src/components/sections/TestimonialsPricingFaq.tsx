@@ -3,113 +3,72 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  PreTitleBadge,
   PrimaryGlassButton,
-  SecondaryPillButton,
 } from "@/components/ui/ActionButtons";
 import { SpringReveal } from "@/components/ui/MotionPrimitives";
 
 const testimonials = [
   {
     quote:
-      "This platform helped me understand my portfolio in ways I couldn’t before. The insights are clear and actually useful.",
-    name: "David Miller",
-    role: "Individual Investor",
-    avatar: "/images/avatar-1.jpg",
-  },
-  {
-    quote:
-      "Managing multiple portfolios is much easier now. The risk analysis tools save us hours every week.",
-    name: "Sarah Thompson",
-    role: "Wealth Manager",
+      "Before/after photo tracking paired with Clinical AI cut our SOAP note overhead and saved 12 hours every single week.",
+    name: "Dr. Elena Vance",
+    role: "Director, Apex Dermatology",
     avatar: "/images/avatar-2.jpg",
   },
   {
     quote:
-      "The real-time insights and alerts help me react faster to market changes. It’s become part of my daily workflow.",
-    name: "Michael Chen",
-    role: "Active Trader",
+      "Operations AI optimized our diagnostic room rotations and shaved 22 minutes off patient wait times across branches.",
+    name: "Dr. Marcus Chen",
+    role: "Medical Lead, VisionEye Centers",
     avatar: "/images/avatar-3.jpg",
   },
   {
     quote:
-      "The data visualization and analytics tools make complex financial information far easier to interpret.",
-    name: "Emily Rodriguez",
-    role: "Financial Analyst",
+      "Having Reception AI, Clinical AI, and DeltaDental billing pre-checks in one isolated multi-branch tenant changed our franchise.",
+    name: "Dr. Sarah Jenkins",
+    role: "Founder, BrightSmile Dental Group",
     avatar: "/images/avatar-4.jpg",
   },
   {
     quote:
-      "The insights are clear and actionable. It helps me track performance and make better investment decisions every day.",
+      "Ambient voice dictation drafts structured ENT notes from our audiometry sessions in under a minute with zero-retention security.",
+    name: "Dr. David Miller",
+    role: "Otolaryngologist, ENT Care",
+    avatar: "/images/avatar-1.jpg",
+  },
+  {
+    quote:
+      "Our physiotherapists track joint ROM and home exercise adherence effortlessly while Clinical AI flags early recovery regression.",
     name: "Daniel Carter",
-    role: "Portfolio Manager",
+    role: "Lead Physio, MotionRehab Clinic",
     avatar: "/images/avatar-5.jpg",
   },
 ];
 
-const starterFeatures = [
-  "Connect up to 5 investment accounts",
-  "Portfolio performance tracking",
-  "Basic AI insights",
-  "Market updates & alerts",
-  "Real-time price alerts",
-  "Email support",
-];
-
-const proFeatures = [
-  "Unlimited account connections",
-  "Advanced AI investment insights",
-  "Portfolio risk analysis",
-  "Smart alerts & automation",
-  "Historical performance analytics",
-  "Priority support",
-];
-
 const faqs = [
   {
-    q: "How secure is my financial data?",
-    a: "Your data is protected with industry-standard encryption and secure infrastructure. We follow strict security practices to ensure your financial information remains private and safe.",
+    q: "Is Hypocrates HIPAA and GDPR compliant?",
+    a: "Yes. Hypocrates acts as a Business Associate under HIPAA and executes Business Associate Agreements (BAAs) with Covered Entities. All PHI is encrypted with AES-256 at rest and TLS 1.3 in transit, with strict role-based access and audit logs.",
   },
   {
-    q: "Can I connect multiple investment accounts?",
-    a: "Yes. You can securely connect multiple bank, trading, and investment accounts to track everything in one unified dashboard.",
+    q: "How does Zero-Retention Ambient Voice Scribing work?",
+    a: "Consultation audio is processed in real time to compile structured SOAP notes and is immediately deleted once formatted. Hypocrates never retains raw patient or clinician voice recordings on disk.",
   },
   {
-    q: "How do the AI insights work?",
-    a: "Our AI analyzes market trends, portfolio performance, and risk signals to generate insights that help you make smarter investment decisions.",
+    q: "Which EHRs, imaging systems, and wearables are supported?",
+    a: "Hypocrates integrates with Epic, Cerner, Athenahealth, Modernizing Medicine, DrChrono, eClinicalWorks, DICOM PACS, Apple HealthKit, Fitbit, Garmin, Dexcom CGM, Change Healthcare, Availity, and Stripe.",
   },
   {
-    q: "Is a trial available before subscribing?",
-    a: "Yes. You can explore the platform with a trial period to understand how the features work before choosing a paid plan.",
+    q: "Can we run multiple clinic branches or specialties under one account?",
+    a: "Yes. Hypocrates uses a multi-level franchise architecture where each branch runs an isolated SQL database and automated public website while managers get unified cross-branch analytics.",
   },
   {
-    q: "Do you offer plans for financial teams or organizations?",
-    a: "Yes. We offer enterprise solutions designed for financial teams and institutions. You can contact our sales team to discuss custom requirements.",
+    q: "Does Hypocrates provide medical diagnosis or replace clinicians?",
+    a: "No. Hypocrates is an AI-powered administrative and documentation assistant. Licensed healthcare professionals remain solely responsible for reviewing and verifying all documentation and clinical decisions.",
   },
 ];
 
-function AnimatedPrice({ value }: { value: number }) {
-  return (
-    <span className="inline-flex items-baseline font-heading font-semibold text-[48px] leading-[1em] tracking-[-1px] overflow-hidden">
-      <span>$</span>
-      <AnimatePresence mode="popLayout" initial={false}>
-        <motion.span
-          key={value}
-          initial={{ y: 24, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -24, opacity: 0 }}
-          transition={{ type: "spring", stiffness: 320, damping: 28 }}
-          className="inline-block"
-        >
-          {value}
-        </motion.span>
-      </AnimatePresence>
-    </span>
-  );
-}
-
 export function TestimonialsPricingFaq() {
-  const [yearly, setYearly] = useState(false);
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (
@@ -134,31 +93,31 @@ export function TestimonialsPricingFaq() {
         <div className="relative z-10 max-w-[1160px] mx-auto px-5">
           <SpringReveal className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div>
-              <h2 className="font-heading font-semibold text-[34px] md:text-[48px] leading-[1.15em] tracking-[-1px] text-[#1d1d1d] max-w-[540px]">
-                What investors say about the platform
+              <h2 className="font-heading font-semibold text-[34px] md:text-[48px] leading-[1.15em] tracking-[-1px] text-[#1d1d1d] max-w-[580px]">
+                What clinicians say about Hypocrates
               </h2>
               <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-[#4d585f] font-display font-medium text-[15px]">
                 <span className="inline-flex items-center gap-2">
                   <img src="/images/icon-star.svg" alt="" className="w-4 h-4" />
-                  4.9/5 Rating
+                  12+ hrs saved/week
                 </span>
                 <span className="hidden sm:block w-[1px] h-4 bg-[#1d1d1d]/15" />
                 <span className="inline-flex items-center gap-2">
                   <img src="/images/icon-heart.svg" alt="" className="w-4 h-4" />
-                  75+ Testimonials
+                  7 Medical Specialties
                 </span>
                 <span className="hidden sm:block w-[1px] h-4 bg-[#1d1d1d]/15" />
                 <span className="inline-flex items-center gap-2">
                   <img src="/images/icon-users.svg" alt="" className="w-5 h-4" />
-                  10K+ Growth community
+                  HIPAA &amp; GDPR Ready
                 </span>
               </div>
             </div>
 
             <div>
               <PrimaryGlassButton
-                href="/pricing"
-                label="Get started today"
+                href="/demo"
+                label="Request Demo"
                 variant="dark"
               />
             </div>
@@ -205,223 +164,20 @@ export function TestimonialsPricingFaq() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section id="pricing" className="py-16 md:py-24 bg-white">
-        <div className="max-w-[960px] mx-auto px-5">
-          <SpringReveal className="text-center">
-            <PreTitleBadge text="Subscription plans" variant="slate" />
-            <h2 className="mt-5 font-heading font-semibold text-[34px] md:text-[48px] leading-[1.15em] tracking-[-1px] text-[#1d1d1d] max-w-[540px] mx-auto">
-              Transparent pricing without hidden fees
-            </h2>
-          </SpringReveal>
-
-          {/* Outer Tabbed Container */}
-          <div className="mt-10 flex flex-col items-center">
-            {/* Monthly / Yearly Switcher */}
-            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-t-[20px] border border-b-0 border-[#dde5ed] bg-white">
-              <button
-                type="button"
-                onClick={() => setYearly(false)}
-                className={`font-display font-semibold text-[15px] cursor-pointer transition-colors ${
-                  !yearly ? "text-[#1d1d1d]" : "text-[#4d585f]"
-                }`}
-              >
-                Monthly
-              </button>
-
-              <button
-                type="button"
-                role="switch"
-                aria-checked={yearly}
-                aria-label="Toggle yearly billing"
-                onClick={() => setYearly((prev) => !prev)}
-                className="relative w-[52px] h-[28px] rounded-full bg-[#edf1f4] border border-[#dde5ed] p-0.5 cursor-pointer flex items-center"
-              >
-                <motion.span
-                  layout
-                  transition={{ type: "spring", stiffness: 500, damping: 32 }}
-                  className={`w-[22px] h-[22px] rounded-full shadow-sm ${
-                    yearly
-                      ? "ml-auto bg-[#3b82f6]"
-                      : "mr-auto bg-white"
-                  }`}
-                />
-              </button>
-
-              <button
-                type="button"
-                onClick={() => setYearly(true)}
-                className={`font-display font-semibold text-[15px] cursor-pointer transition-colors ${
-                  yearly ? "text-[#1d1d1d]" : "text-[#4d585f]"
-                }`}
-              >
-                Yearly
-              </button>
-
-              <span className="px-2.5 py-0.5 rounded-full bg-[#10b981]/15 text-[#10b981] font-display font-semibold text-[13px]">
-                20%off
-              </span>
-            </div>
-
-            {/* 2-Plan Container */}
-            <div className="w-full rounded-[30px] border border-[#dde5ed] p-3 bg-white">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                {/* Starter Plan */}
-                <div className="rounded-[24px] bg-[#edf1f4] p-7 md:p-9 flex flex-col justify-between">
-                  <div>
-                    <h3 className="font-heading font-semibold text-[24px] text-[#1d1d1d]">
-                      Starter plan
-                    </h3>
-                    <p className="mt-1 font-display font-medium text-[15px] text-[#4d585f]">
-                      Best for individual investors
-                    </p>
-
-                    <div className="mt-7 flex items-baseline gap-1.5 text-[#1d1d1d]">
-                      <AnimatedPrice value={yearly ? 16 : 19} />
-                      <span className="font-display font-medium text-[16px] text-[#4d585f]">
-                        /month
-                      </span>
-                    </div>
-
-                    <div className="mt-7">
-                      <SecondaryPillButton
-                        href="/contact"
-                        label="Get started"
-                        variant="dark"
-                        className="w-full !h-[56px]"
-                      />
-                    </div>
-
-                    <ul className="mt-8 space-y-3.5">
-                      {starterFeatures.map((feat) => (
-                        <li
-                          key={feat}
-                          className="flex items-center gap-3 font-display font-medium text-[15px] text-[#4d585f]"
-                        >
-                          <img
-                            src="/images/icon-pricing-chevron.svg"
-                            alt=""
-                            className="w-2 h-3 shrink-0"
-                          />
-                          <span>{feat}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-
-                {/* Pro Plan */}
-                <div className="rounded-[24px] bg-gradient-to-b from-[#323232] to-[#000000] p-7 md:p-9 flex flex-col justify-between text-white">
-                  <div>
-                    <div className="flex items-center justify-between gap-3">
-                      <h3 className="font-heading font-semibold text-[24px] text-white">
-                        Pro plan
-                      </h3>
-                      <span className="px-3 py-1 rounded-full bg-[#3b82f6] text-white font-display font-semibold text-[13px]">
-                        Popular
-                      </span>
-                    </div>
-                    <p className="mt-1 font-display font-medium text-[15px] text-white/70">
-                      Best for active investors
-                    </p>
-
-                    <div className="mt-7 flex items-baseline gap-1.5 text-white">
-                      <AnimatedPrice value={yearly ? 32 : 39} />
-                      <span className="font-display font-medium text-[16px] text-white/70">
-                        /month
-                      </span>
-                    </div>
-
-                    <div className="mt-7">
-                      <SecondaryPillButton
-                        href="/contact"
-                        label="Get started"
-                        variant="white"
-                        className="w-full !h-[56px]"
-                      />
-                    </div>
-
-                    <ul className="mt-8 space-y-3.5">
-                      {proFeatures.map((feat) => (
-                        <li
-                          key={feat}
-                          className="flex items-center gap-3 font-display font-medium text-[15px] text-white/80"
-                        >
-                          <img
-                            src="/images/icon-pricing-chevron.svg"
-                            alt=""
-                            className="w-2 h-3 shrink-0 brightness-150"
-                          />
-                          <span>{feat}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
-              </div>
-
-              {/* Footer Note Bar */}
-              <div className="py-4 px-4 text-center font-display font-medium text-[14px] text-[#4d585f] flex flex-wrap items-center justify-center gap-x-4 gap-y-1">
-                <span>7-day free trial available</span>
-                <span>•</span>
-                <span>No credit card required</span>
-                <span>•</span>
-                <span>Cancel anytime</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Enterprise Plan Banner */}
-          <SpringReveal delay={0.1} className="mt-6">
-            <div className="relative rounded-[24px] overflow-hidden border border-[#dde5ed] bg-gradient-to-r from-[#eef7fc] to-[#d9f0fc] p-7 md:p-9 flex flex-col md:flex-row md:items-center justify-between gap-6">
-              <img
-                src="/images/enterprise-flowers.png"
-                alt=""
-                style={{
-                  maskImage: "linear-gradient(to right, transparent 0%, black 20%)",
-                  WebkitMaskImage:
-                    "linear-gradient(to right, transparent 0%, black 20%)",
-                }}
-                className="hidden sm:block absolute right-0 bottom-0 h-full w-auto object-contain pointer-events-none select-none"
-              />
-              <div className="relative z-10 max-w-[460px]">
-                <h3 className="font-heading font-semibold text-[24px] text-[#1d1d1d]">
-                  Enterprise plan
-                </h3>
-                <p className="mt-2 font-display font-medium text-[16px] leading-[1.45em] text-[#4d585f]">
-                  Need a custom solution for your organization? Talk with our
-                  team to design a plan for your needs.
-                </p>
-              </div>
-              <div className="relative z-10 shrink-0">
-                <SecondaryPillButton
-                  href="/contact"
-                  label="Contact sales"
-                  variant="dark"
-                  className="!h-[56px] !px-9"
-                />
-              </div>
-            </div>
-          </SpringReveal>
-        </div>
-      </section>
-
       {/* FAQ Section */}
       <section className="py-16 md:py-24 bg-white">
         <div className="max-w-[1160px] mx-auto px-5 grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Left Column */}
           <SpringReveal className="lg:col-span-5 flex flex-col justify-between gap-8">
             <div>
               <h2 className="font-heading font-semibold text-[34px] md:text-[48px] leading-[1.12em] tracking-[-1px] text-[#1d1d1d]">
                 Frequently asked questions
               </h2>
               <p className="mt-4 font-display font-medium text-[17px] leading-[1.45em] text-[#4d585f]">
-                Find quick answers to common questions about the platform,
-                pricing, and security.
+                Quick answers about HIPAA compliance, zero-retention scribing,
+                EHR integrations, and specialty workflows.
               </p>
             </div>
 
-            {/* Support Card */}
             <div className="rounded-[24px] bg-[#edf1f4] p-7 max-w-[380px]">
               <div className="flex items-center">
                 <div className="flex -space-x-2.5">
@@ -453,20 +209,19 @@ export function TestimonialsPricingFaq() {
                 Still have questions?
               </h3>
               <p className="mt-1.5 font-display font-medium text-[15px] text-[#4d585f]">
-                Reach out, and our team will guide you.
+                Talk with our clinical workflow specialists.
               </p>
 
               <div className="mt-6">
                 <PrimaryGlassButton
                   href="/contact"
-                  label="Talk to our team"
+                  label="Contact our team"
                   variant="dark"
                 />
               </div>
             </div>
           </SpringReveal>
 
-          {/* Right Column: Accordions */}
           <div className="lg:col-span-7 space-y-4">
             {faqs.map((item, idx) => {
               const isOpen = openFaq === idx;
@@ -534,4 +289,3 @@ export function TestimonialsPricingFaq() {
     </>
   );
 }
-

@@ -34,19 +34,23 @@ export function PrimaryGlassButton({
     ? "bg-gradient-to-b from-[#5290f4] via-[#3b82f6] to-[#406ae4] border border-[#5290f4] text-white"
     : "bg-gradient-to-b from-[#323232] to-[#000000] border border-white/15 text-white";
 
-  const paddingClass = isSmall ? "p-[4px]" : "p-[6px]";
-  const innerHeight = isSmall ? "h-[42px] px-4" : "h-[52px] px-5";
-  const textSize = isSmall ? "text-[15px]" : "text-[18px]";
-  const circleSize = isSmall ? 30 : 36;
+  const paddingClass = isSmall ? "p-[4px]" : "p-[5px] sm:p-[6px]";
+  const innerHeight = isSmall
+    ? "h-[42px] px-4"
+    : "h-[48px] sm:h-[52px] px-4 sm:px-5";
+  const textSize = isSmall
+    ? "text-[14.5px] sm:text-[15px]"
+    : "text-[15.5px] sm:text-[18px]";
+  const circleSize = isSmall ? 30 : 34;
 
   const content = (
     <span
-      className={`inline-flex items-center rounded-full ${paddingClass} ${outerStyle} transition-transform duration-300 ${className}`}
+      className={`inline-flex max-w-full items-center rounded-full ${paddingClass} ${outerStyle} transition-transform duration-300 ${className}`}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
     >
       <span
-        className={`relative inline-flex items-center justify-center rounded-full overflow-hidden ${innerHeight} ${innerStyle} font-display font-semibold ${textSize} leading-[1.3em] whitespace-nowrap select-none`}
+        className={`relative inline-flex max-w-full items-center justify-center rounded-full overflow-hidden ${innerHeight} ${innerStyle} font-display font-semibold ${textSize} leading-[1.3em] whitespace-nowrap select-none`}
       >
         {/* Left Arrow Badge (expands in on hover) */}
         <motion.span
@@ -133,7 +137,7 @@ export function SecondaryPillButton({
       href={href}
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
-      className={`inline-flex items-center justify-center rounded-full px-[44px] h-[64px] font-display font-semibold text-[18px] leading-[1.3em] transition-colors duration-[400ms] ease-[cubic-bezier(0.44,0,0.56,1)] shadow-[0_6px_24px_rgba(0,0,0,0.06)] ${colorClass} ${className}`}
+      className={`inline-flex items-center justify-center rounded-full px-7 sm:px-[44px] h-[54px] sm:h-[64px] font-display font-semibold text-[16px] sm:text-[18px] leading-[1.3em] transition-colors duration-[400ms] ease-[cubic-bezier(0.44,0,0.56,1)] shadow-[0_6px_24px_rgba(0,0,0,0.06)] ${colorClass} ${className}`}
     >
       <span className="relative block h-[24px] overflow-hidden">
         <motion.span
@@ -152,20 +156,29 @@ export function SecondaryPillButton({
 interface PreTitleBadgeProps {
   text: string;
   variant?: "slate" | "white";
+  showIcon?: boolean;
   className?: string;
 }
 
 export function PreTitleBadge({
   text,
   variant = "slate",
+  showIcon = true,
   className = "",
 }: PreTitleBadgeProps) {
   const bg = variant === "white" ? "bg-white" : "bg-[#edf1f4]";
   return (
     <span
-      className={`inline-flex items-center justify-center rounded-full px-[20px] py-[10px] border border-[#dde5ed] ${bg} font-display font-medium text-[14px] leading-[1.3em] text-[#1d1d1d] ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-full px-[18px] py-[8px] border border-[#dde5ed] ${bg} font-display font-medium text-[14px] leading-[1.3em] text-[#1d1d1d] shadow-[0_2px_10px_rgba(0,0,0,0.02)] ${className}`}
     >
-      {text}
+      {showIcon && (
+        <img
+          src="/images/hypocrates-logo.png"
+          alt=""
+          className="h-5 w-5 object-contain shrink-0"
+        />
+      )}
+      <span>{text}</span>
     </span>
   );
 }

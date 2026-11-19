@@ -5,15 +5,15 @@ import { motion } from "framer-motion";
 import { PreTitleBadge, PrimaryGlassButton } from "@/components/ui/ActionButtons";
 import { SpringReveal } from "@/components/ui/MotionPrimitives";
 
-const arcIcons = [
-  { src: "/images/int-1.svg", pos: "left-[7%] bottom-[12%]" },
-  { src: "/images/int-2.svg", pos: "left-[14%] bottom-[38%]" },
-  { src: "/images/int-3.svg", pos: "left-[24%] bottom-[62%]" },
-  { src: "/images/int-4.svg", pos: "left-[37%] bottom-[78%]" },
-  { src: "/images/int-5.svg", pos: "right-[37%] bottom-[78%]" },
-  { src: "/images/int-6.svg", pos: "right-[24%] bottom-[62%]" },
-  { src: "/images/int-7.svg", pos: "right-[14%] bottom-[38%]" },
-  { src: "/images/int-8.svg", pos: "right-[7%] bottom-[12%]" },
+const arcIntegrations = [
+  { label: "Epic", tone: "bg-[#3b82f6]", pos: "left-[5%] bottom-[32%]" },
+  { label: "Cerner", tone: "bg-[#10b981]", pos: "left-[14%] bottom-[52%]" },
+  { label: "Athena", tone: "bg-[#6366f1]", pos: "left-[24%] bottom-[70%]" },
+  { label: "DICOM", tone: "bg-[#0ea5e9]", pos: "left-[36%] bottom-[83%]" },
+  { label: "HealthKit", tone: "bg-[#ef4444]", pos: "right-[36%] bottom-[83%]" },
+  { label: "LabCorp", tone: "bg-[#f59e0b]", pos: "right-[24%] bottom-[70%]" },
+  { label: "Availity", tone: "bg-[#10b981]", pos: "right-[14%] bottom-[52%]" },
+  { label: "Stripe", tone: "bg-[#635bff]", pos: "right-[5%] bottom-[32%]" },
 ];
 
 export function IntegrationsAndStats() {
@@ -23,80 +23,81 @@ export function IntegrationsAndStats() {
       <section id="integrations" className="py-12 md:py-20 bg-white">
         <div className="max-w-[1160px] mx-auto px-5">
           <div className="relative rounded-[32px] bg-[#edf1f4] overflow-hidden pt-16 md:pt-20">
-            {/* Header */}
-            <SpringReveal className="relative z-20 max-w-[600px] mx-auto px-6 text-center">
-              <PreTitleBadge text="Integrations" variant="white" />
+            <SpringReveal className="relative z-20 max-w-[620px] mx-auto px-6 text-center">
+              <PreTitleBadge text="Connected clinic integrations" variant="white" />
               <h2 className="mt-5 font-heading font-semibold text-[34px] md:text-[48px] leading-[1.18em] tracking-[-1px] text-[#1d1d1d]">
-                Connect with the tools you already use
+                Connect with your EHR, PACS &amp; health devices
               </h2>
               <p className="mt-4 font-display font-medium text-[17px] md:text-[18px] leading-[1.4em] text-[#4d585f]">
-                Seamlessly integrate with your financial platforms, data
-                sources, and tools to keep everything connected and up to date.
+                Bi-directional writebacks across Epic, Cerner, Athenahealth,
+                DICOM imaging, Apple HealthKit, and insurance clearinghouses.
               </p>
               <div className="mt-7">
                 <PrimaryGlassButton
-                  href="https://www.framer.com/marketplace/plugins/"
+                  href="/integrations"
                   label="Explore all integrations"
                   variant="blue"
-                  external
                 />
               </div>
             </SpringReveal>
 
             {/* Radial Arc Stage + Rolling Green Hills */}
             <div className="relative mt-8 md:mt-10 h-[340px] md:h-[430px] flex flex-col items-center justify-center">
-              {/* Desktop Arc Icons */}
-              <div className="hidden md:block absolute inset-0 z-10 pointer-events-none">
-                {arcIcons.map((item, idx) => (
+              {/* Desktop Arc Badges */}
+              <div className="hidden md:block absolute inset-0 z-20 pointer-events-none">
+                {arcIntegrations.map((item, idx) => (
                   <motion.div
-                    key={item.src}
+                    key={item.label}
                     animate={{ y: [0, idx % 2 === 0 ? -7 : 7, 0] }}
                     transition={{
                       duration: 4 + (idx % 3),
                       repeat: Infinity,
                       ease: "easeInOut",
                     }}
-                    className={`absolute ${item.pos} w-[74px] h-[74px] rounded-full bg-white shadow-[0_12px_30px_rgba(0,0,0,0.06)] flex items-center justify-center`}
+                    className={`absolute ${item.pos} px-4 h-[52px] rounded-full bg-white border border-[#dde5ed] shadow-[0_12px_30px_rgba(0,0,0,0.08)] flex items-center justify-center gap-2 font-heading font-semibold text-[14px] text-[#1d1d1d]`}
                   >
-                    <img
-                      src={item.src}
-                      alt=""
-                      className="w-9 h-9 object-contain"
-                    />
+                    <span className={`w-2.5 h-2.5 rounded-full ${item.tone}`} />
+                    <span>{item.label}</span>
                   </motion.div>
                 ))}
               </div>
 
               {/* Mobile Grid Fallback */}
-              <div className="md:hidden grid grid-cols-4 gap-3 px-6 mb-6 z-10">
-                {arcIcons.map((item) => (
+              <div className="md:hidden grid grid-cols-4 gap-2 px-6 mb-6 z-10">
+                {arcIntegrations.map((item) => (
                   <div
-                    key={item.src}
-                    className="w-14 h-14 rounded-full bg-white shadow-sm flex items-center justify-center"
+                    key={item.label}
+                    className="px-2 py-2 rounded-full bg-white shadow-sm flex items-center justify-center font-display font-semibold text-[11px] text-[#1d1d1d]"
                   >
-                    <img
-                      src={item.src}
-                      alt=""
-                      className="w-7 h-7 object-contain"
-                    />
+                    {item.label}
                   </div>
                 ))}
               </div>
 
-              {/* Central Dark FintechX Emblem */}
+              {/* Central Hypocrates Emblem */}
               <div className="relative z-20 flex flex-col items-center -mt-4 md:mt-4">
-                <motion.div
-                  whileHover={{ scale: 1.06 }}
-                  className="w-[104px] h-[104px] md:w-[116px] md:h-[116px] rounded-full bg-gradient-to-b from-[#323232] to-[#000000] shadow-[0_24px_50px_rgba(0,0,0,0.28)] border border-white/15 flex items-center justify-center"
-                >
-                  <img
-                    src="/images/integrations-emblem.svg"
-                    alt="FintechX Core"
-                    className="w-12 h-12 object-contain"
+                <div className="relative flex items-center justify-center">
+                  <motion.span
+                    aria-hidden="true"
+                    animate={{ scale: [1, 1.16, 1], opacity: [0.45, 0.12, 0.45] }}
+                    transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
+                    className="absolute inset-0 rounded-full border-2 border-[#3b82f6]/50"
                   />
-                </motion.div>
-                <h3 className="mt-6 font-heading font-semibold text-[24px] md:text-[28px] leading-[1.2em] text-[#1d1d1d] text-center max-w-[340px] px-4">
-                  100+ integrations available and growing
+                  <motion.div
+                    whileHover={{ scale: 1.08, rotate: -3 }}
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
+                    className="relative w-[132px] h-[132px] md:w-[152px] md:h-[152px] rounded-full bg-white shadow-[0_24px_50px_rgba(0,0,0,0.22)] border-4 border-[#1d1d1d] flex items-center justify-center p-4"
+                  >
+                    <img
+                      src="/images/hypocrates-logo.png"
+                      alt="Hypocrates Core"
+                      className="w-full h-full object-contain"
+                    />
+                  </motion.div>
+                </div>
+                <h3 className="mt-5 px-5 py-2.5 rounded-full bg-white/95 backdrop-blur-md border border-[#dde5ed] shadow-[0_10px_28px_rgba(0,0,0,0.12)] font-heading font-semibold text-[18px] md:text-[22px] leading-[1.2em] text-[#1d1d1d] text-center mx-4">
+                  HL7 / FHIR, DICOM PACS &amp; wearable APIs
                 </h3>
               </div>
 
@@ -123,9 +124,9 @@ export function IntegrationsAndStats() {
               <div className="rounded-[26px] bg-[#edf1f4] p-7 min-h-[240px] flex flex-col justify-between">
                 <div className="flex items-start justify-between gap-3">
                   <span className="font-display font-medium text-[17px] text-[#1d1d1d]">
-                    Active
+                    Hours saved
                     <br />
-                    investors
+                    weekly
                   </span>
                   <span className="w-10 h-10 rounded-full bg-[#3b82f6] flex items-center justify-center shrink-0">
                     <img src="/images/stat-1.svg" alt="" className="w-5 h-5" />
@@ -133,10 +134,10 @@ export function IntegrationsAndStats() {
                 </div>
                 <div className="mt-8">
                   <h3 className="font-heading font-semibold text-[38px] leading-[1.1em] tracking-[-1px] text-[#1d1d1d]">
-                    10,000+
+                    12+ hrs
                   </h3>
                   <p className="mt-2 font-display font-medium text-[15px] leading-[1.4em] text-[#4d585f]">
-                    Users managing portfolios with AI insights.
+                    Reclaimed every single week per practitioner.
                   </p>
                 </div>
               </div>
@@ -144,13 +145,13 @@ export function IntegrationsAndStats() {
 
             {/* Center Header */}
             <SpringReveal className="lg:col-span-6 text-center px-2 py-4">
-              <PreTitleBadge text="Platform stats" variant="slate" />
+              <PreTitleBadge text="Clinical impact" variant="slate" />
               <h2 className="mt-5 font-heading font-semibold text-[34px] md:text-[48px] leading-[1.15em] tracking-[-1px] text-[#1d1d1d]">
-                Powering smarter investment decisions
+                Returning clinical hours back to patient care
               </h2>
               <p className="mt-4 font-display font-medium text-[17px] md:text-[18px] leading-[1.4em] text-[#4d585f] max-w-[480px] mx-auto">
-                Real-time insights, advanced analytics, and secure
-                infrastructure working together.
+                Ambient AI scribes, intelligent scheduling, and isolated clinic
+                architecture working together in real time.
               </p>
             </SpringReveal>
 
@@ -159,9 +160,9 @@ export function IntegrationsAndStats() {
               <div className="rounded-[26px] bg-gradient-to-br from-[#323232] to-[#000000] p-7 min-h-[240px] flex flex-col justify-between text-white">
                 <div className="flex items-start justify-between gap-3">
                   <span className="font-display font-medium text-[17px] text-white/90">
-                    Assets
+                    Charting
                     <br />
-                    tracked
+                    turnaround
                   </span>
                   <span className="w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0">
                     <img src="/images/stat-2.svg" alt="" className="w-5 h-5" />
@@ -169,10 +170,10 @@ export function IntegrationsAndStats() {
                 </div>
                 <div className="mt-8">
                   <h3 className="font-heading font-semibold text-[38px] leading-[1.1em] tracking-[-1px] text-white">
-                    $250M+
+                    68%
                   </h3>
                   <p className="mt-2 font-display font-medium text-[15px] leading-[1.4em] text-white/75">
-                    In investments monitored across the platform.
+                    Reduction in clinical chart turnaround time.
                   </p>
                 </div>
               </div>
@@ -186,9 +187,9 @@ export function IntegrationsAndStats() {
               <div className="rounded-[26px] bg-gradient-to-br from-[#323232] to-[#000000] p-7 min-h-[250px] flex flex-col justify-between text-white">
                 <div className="flex items-start justify-between gap-3">
                   <span className="font-display font-medium text-[17px] text-white/90">
-                    AI insights
+                    Admin burden
                     <br />
-                    generated
+                    addressed
                   </span>
                   <span className="w-10 h-10 rounded-full bg-white flex items-center justify-center shrink-0">
                     <img src="/images/stat-5.svg" alt="" className="w-4 h-5" />
@@ -196,23 +197,23 @@ export function IntegrationsAndStats() {
                 </div>
                 <div className="mt-8">
                   <h3 className="font-heading font-semibold text-[40px] leading-[1.1em] tracking-[-1px] text-white">
-                    1M+
+                    40%
                   </h3>
                   <p className="mt-2 font-display font-medium text-[15px] leading-[1.4em] text-white/75">
-                    Data-driven signals delivered every month.
+                    Of the physician workday currently lost to screens &amp; typing.
                   </p>
                 </div>
               </div>
             </SpringReveal>
 
-            {/* Bottom-Center Blue Card (staggered down on desktop) */}
+            {/* Bottom-Center Blue Card */}
             <SpringReveal delay={0.18} className="md:mt-14">
               <div className="rounded-[26px] bg-gradient-to-r from-[#406ae4] to-[#3b82f6] p-7 min-h-[250px] flex flex-col justify-between text-white shadow-[0_20px_50px_rgba(59,130,246,0.28)]">
                 <div className="flex items-start justify-between gap-3">
                   <span className="font-display font-medium text-[17px] text-white/95">
-                    Markets
+                    Specialty
                     <br />
-                    covered
+                    tenants
                   </span>
                   <span className="w-10 h-10 rounded-full bg-[#1d1d1d] flex items-center justify-center shrink-0">
                     <img src="/images/stat-4.svg" alt="" className="w-5 h-5" />
@@ -220,10 +221,10 @@ export function IntegrationsAndStats() {
                 </div>
                 <div className="mt-8">
                   <h3 className="font-heading font-semibold text-[40px] leading-[1.1em] tracking-[-1px] text-white">
-                    120+
+                    7 Clinics
                   </h3>
                   <p className="mt-2 font-display font-medium text-[15px] leading-[1.4em] text-white/85">
-                    Global financial markets are analyzed in real time.
+                    Dental, Derm, Plastic Surgery, ENT, Nutrition, Physio &amp; Eye.
                   </p>
                 </div>
               </div>
@@ -236,7 +237,7 @@ export function IntegrationsAndStats() {
                   <span className="font-display font-medium text-[17px] text-[#1d1d1d]">
                     Platform
                     <br />
-                    uptime
+                    uptime SLA
                   </span>
                   <span className="w-10 h-10 rounded-full bg-[#3b82f6] flex items-center justify-center shrink-0">
                     <img src="/images/stat-3.svg" alt="" className="w-4 h-5" />
@@ -247,7 +248,7 @@ export function IntegrationsAndStats() {
                     99.9%
                   </h3>
                   <p className="mt-2 font-display font-medium text-[15px] leading-[1.4em] text-[#4d585f]">
-                    Reliable access to your financial intelligence.
+                    Operational uptime with RPO ≤ 24h &amp; RTO ≤ 4h continuity.
                   </p>
                 </div>
               </div>
@@ -258,4 +259,3 @@ export function IntegrationsAndStats() {
     </>
   );
 }
-

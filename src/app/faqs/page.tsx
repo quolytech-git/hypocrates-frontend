@@ -7,7 +7,7 @@ export default function FaqsPage() {
     <SubpageShell
       badge="FAQs"
       title="Frequently asked questions"
-      subtitle="Everything you need to know about FintechX security, integrations, AI insights, and billing."
+      subtitle="Everything you need to know about Hypocrates security, specialty tenants, ambient AI scribing, and pricing."
     >
       <TestimonialsPricingFaq />
     </SubpageShell>

@@ -7,6 +7,13 @@ interface SubmissionPayload {
   name?: string;
   email: string;
   company?: string;
+  clinicName?: string;
+  specialty?: string;
+  clinicSize?: string;
+  selectedPlan?: string;
+  billingCycle?: string;
+  role?: string;
+  subject?: string;
   message?: string;
 }
 
@@ -27,7 +34,13 @@ export async function POST(req: NextRequest) {
       type: body.type ?? "contact",
       name: (body.name ?? "").trim(),
       email,
-      company: (body.company ?? "").trim(),
+      company: (body.company ?? body.clinicName ?? "").trim(),
+      specialty: (body.specialty ?? "").trim(),
+      clinicSize: (body.clinicSize ?? "").trim(),
+      selectedPlan: (body.selectedPlan ?? "").trim(),
+      billingCycle: (body.billingCycle ?? "").trim(),
+      role: (body.role ?? "").trim(),
+      subject: (body.subject ?? "").trim(),
       message: (body.message ?? "").trim(),
       createdAt: new Date().toISOString(),
     };
@@ -49,7 +62,11 @@ export async function POST(req: NextRequest) {
     await fs.writeFile(filePath, JSON.stringify(existing, null, 2), "utf-8");
 
     return NextResponse.json(
-      { ok: true, id: entry.id, message: "Thank you! Your request has been received." },
+      {
+        ok: true,
+        id: entry.id,
+        message: "Thank you! Your Hypocrates request has been received.",
+      },
       { status: 201 }
     );
   } catch {

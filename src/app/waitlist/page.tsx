@@ -5,9 +5,9 @@ import { SubmissionForm } from "@/components/SubmissionForm";
 export default function WaitlistPage() {
   return (
     <SubpageShell
-      badge="Waitlist"
-      title="Get early access to new AI tools"
-      subtitle="Join the priority waitlist for upcoming institutional analytics and automated rebalancing features."
+      badge="Early Access"
+      title="Get priority access to new Hypocrates AI modules"
+      subtitle="Join our clinical rollout waitlist for upcoming specialty engines, PACS connectors, and automated revenue cycle tools."
     >
       <div className="max-w-[640px] mx-auto px-5">
         <SubmissionForm

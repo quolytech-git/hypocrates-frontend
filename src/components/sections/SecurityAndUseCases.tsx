@@ -5,52 +5,52 @@ import { PreTitleBadge, PrimaryGlassButton } from "@/components/ui/ActionButtons
 import { SpringReveal } from "@/components/ui/MotionPrimitives";
 
 const securityItems = [
-  "End-to-end encryption",
-  "Secure data infrastructure",
-  "Privacy-first approach",
-  "Compliance standards",
+  "HIPAA compliant with Business Associate Agreement (BAA)",
+  "GDPR & European data protection standards",
+  "AES-256 encryption at rest & TLS 1.3 in transit",
+  "Zero-retention ambient voice scribing",
 ];
 
 const useCases = [
   {
     photo: "/images/usecase-1.jpg",
     bg: "/images/usecase-1-bg.jpg",
-    title: "Individual investors",
-    desc: "Track your portfolio, get AI insights, and make smarter investment decisions without relying on guesswork.",
-    metric: "+32% Faster",
-    metricDesc: "Decision-making with AI insights",
+    title: "Physicians & Specialists",
+    desc: "Speak naturally during consultations and review AI-drafted SOAP notes in under 1 minute with automatic ICD-10 and CPT coding.",
+    metric: "12+ hrs",
+    metricDesc: "Saved every week per practitioner",
   },
   {
     photo: "/images/usecase-2.jpg",
     bg: "/images/usecase-2-bg.jpg",
-    title: "Financial teams",
-    desc: "Collaborate on financial strategies, monitor investments, and make data-driven decisions at scale.",
-    metric: "Real-Time",
-    metricDesc: "Collaboration across all investment data",
+    title: "Multi-Branch Clinic Owners",
+    desc: "Switch across franchise branches instantly with isolated SQL databases per location and consolidated revenue analytics.",
+    metric: "100%",
+    metricDesc: "Isolated branch data & unified oversight",
   },
   {
     photo: "/images/usecase-3.jpg",
     bg: "/images/usecase-3-bg.jpg",
-    title: "Wealth managers",
-    desc: "Manage multiple client portfolios efficiently with real-time data, risk analysis, and performance tracking.",
-    metric: "10+",
-    metricDesc: "Portfolios managed from a single dashboard",
+    title: "Front Desk & Coordinators",
+    desc: "Automate 24/7 appointment booking, waitlist matching, pre-visit intake forms, and no-show predictions with Receptionist AI.",
+    metric: "24/7",
+    metricDesc: "Conversational booking & patient intake",
   },
   {
     photo: "/images/usecase-4.jpg",
     bg: "/images/usecase-4-bg.jpg",
-    title: "Active traders",
-    desc: "Stay ahead of market movements with real-time alerts and AI-powered signals for quick decisions.",
-    metric: "Up to 2X",
-    metricDesc: "Better goal tracking and portfolio growth",
+    title: "Billing & Operations Teams",
+    desc: "Pre-check coverage eligibility, scrub insurance claims before submission, and forecast consumable inventory automatically.",
+    metric: "+18%",
+    metricDesc: "Patient throughput boost in 30 days",
   },
 ];
 
 const useCasePills = [
-  "10,000+ Users",
-  "4.9 Rating",
-  "Real-time insights",
-  "Secure & compliant",
+  "7 Specialties",
+  "HIPAA & GDPR",
+  "Zero-Retention AI",
+  "99.9% Uptime SLA",
 ];
 
 export function SecurityAndUseCases() {
@@ -87,21 +87,21 @@ export function SecurityAndUseCases() {
             <div className="rounded-[28px] bg-[#edf1f4] overflow-hidden p-4 md:p-6">
               <img
                 src="/images/security-diagram.png"
-                alt="SOC2 Type 2, ISO 27001, and GDPR compliance architecture"
+                alt="HIPAA, SOC2 Type 2, ISO 27001, and GDPR compliance architecture"
                 className="w-full h-auto block rounded-[20px]"
               />
             </div>
           </SpringReveal>
 
           <SpringReveal delay={0.12} className="lg:col-span-6 lg:pl-6">
-            <PreTitleBadge text="Security & compliance" variant="slate" />
+            <PreTitleBadge text="Trust & compliance" variant="slate" />
             <h2 className="mt-5 font-heading font-semibold text-[34px] md:text-[48px] leading-[1.15em] tracking-[-1px] text-[#1d1d1d]">
-              Your data is protected at every level
+              Clinical-grade PHI protection at every level
             </h2>
             <div className="mt-7">
               <PrimaryGlassButton
-                href="/pricing"
-                label="Get started now"
+                href="/compliance"
+                label="Visit Trust Center"
                 variant="dark"
               />
             </div>
@@ -124,13 +124,13 @@ export function SecurityAndUseCases() {
         </div>
       </section>
 
-      {/* Use Cases Carousel & Founder Quote Section */}
+      {/* Use Cases Carousel & Mission Quote Section */}
       <section id="use-cases" className="py-20 md:py-28 bg-white overflow-hidden">
         <div className="max-w-[1160px] mx-auto px-5 text-center">
           <SpringReveal>
-            <PreTitleBadge text="Use cases" variant="slate" />
+            <PreTitleBadge text="Clinic roles" variant="slate" />
             <h2 className="mt-5 font-heading font-semibold text-[34px] md:text-[48px] leading-[1.2em] tracking-[-1px] text-[#1d1d1d]">
-              Who this platform is built for
+              Who Hypocrates is built for
             </h2>
           </SpringReveal>
         </div>
@@ -146,7 +146,6 @@ export function SecurityAndUseCases() {
         >
           {useCases.map((uc) => (
             <React.Fragment key={uc.title}>
-              {/* Portrait Photo Card */}
               <div className="shrink-0 w-[290px] sm:w-[320px] h-[400px] rounded-[24px] overflow-hidden bg-[#edf1f4]">
                 <img
                   src={uc.photo}
@@ -156,7 +155,6 @@ export function SecurityAndUseCases() {
                 />
               </div>
 
-              {/* Frosted Glass Info Card over Nature BG */}
               <div className="relative shrink-0 w-[320px] sm:w-[360px] h-[400px] rounded-[24px] overflow-hidden border border-[#dde5ed]/80 p-7 flex flex-col justify-between">
                 <img
                   src={uc.bg}
@@ -194,7 +192,7 @@ export function SecurityAndUseCases() {
           ))}
         </div>
 
-        {/* 4 Summary Pills + Founder Quote */}
+        {/* 4 Summary Pills + Mission Quote */}
         <div className="max-w-[780px] mx-auto px-5 mt-12 text-center">
           <div className="flex flex-wrap items-center justify-center gap-3">
             {useCasePills.map((pill) => (
@@ -208,18 +206,18 @@ export function SecurityAndUseCases() {
           </div>
 
           <SpringReveal delay={0.1} className="mt-8">
-            <blockquote className="font-display font-medium text-[19px] md:text-[21px] leading-[1.45em] text-[#1d1d1d] max-w-[540px] mx-auto">
-              &ldquo;We built this platform to remove the guesswork from
-              investing and give people clear, data-driven insights.&rdquo;
+            <blockquote className="font-display font-medium text-[19px] md:text-[21px] leading-[1.45em] text-[#1d1d1d] max-w-[580px] mx-auto">
+              &ldquo;Reclaiming clinical hours from screens and keyboards to focus
+              on what matters most: human care.&rdquo;
             </blockquote>
             <div className="mt-5 inline-flex items-center gap-3">
               <img
-                src="/images/avatar-1.jpg"
-                alt="Founder & CEO"
-                className="w-8 h-8 rounded-full object-cover"
+                src="/images/hypocrates-logo.png"
+                alt="Hypocrates"
+                className="w-8 h-8 rounded-full object-contain bg-[#edf1f4] p-1"
               />
               <span className="font-display font-medium text-[15px] text-[#4d585f]">
-                Founder &amp; CEO
+                Hypocrates Core Mission
               </span>
             </div>
           </SpringReveal>
@@ -228,4 +226,3 @@ export function SecurityAndUseCases() {
     </>
   );
 }
-

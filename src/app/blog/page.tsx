@@ -1,56 +1,71 @@
-import React from "react";
+import type { Metadata } from "next";
+import Link from "next/link";
 import { SubpageShell } from "@/components/SubpageShell";
+import { resourceItems } from "@/lib/hypocrates-data";
+import {
+  ArrowRightIcon as ArrowRight,
+  BookOpenIcon as BookOpen,
+  CalendarIcon as Calendar,
+  ClockIcon as Clock,
+} from "@/components/ui/ClinicalIcons";
 
-const posts = [
-  {
-    tag: "AI Insights",
-    title: "How Predictive Risk Scoring Protects Portfolio Drawdowns",
-    excerpt:
-      "Learn how real-time volatility tracking and AI signals help investors stay ahead of sharp market swings.",
-    date: "Oct 2026",
-  },
-  {
-    tag: "Portfolio Strategy",
-    title: "Consolidating Multi-Brokerage Accounts Into One Command Center",
-    excerpt:
-      "Stop juggling spreadsheets. See performance attribution and asset allocation across all holdings automatically.",
-    date: "Oct 2026",
-  },
-  {
-    tag: "Security",
-    title: "Inside Our SOC2 Type 2 & End-to-End Encrypted Architecture",
-    excerpt:
-      "A closer look at how FintechX safeguards financial data with bank-level encryption and zero-trust controls.",
-    date: "Sep 2026",
-  },
-];
+export const metadata: Metadata = {
+  title: "Clinical Blog & Field Notes | Hypocrates",
+  description:
+    "Clinical guides, specialty practice case studies, and engineering updates from Hypocrates.",
+};
 
 export default function BlogPage() {
   return (
     <SubpageShell
-      badge="Blog"
-      title="Insights on AI finance & smarter investing"
-      subtitle="Guides, product updates, and market intelligence from the FintechX research team."
+      badge="Blog & Field Notes"
+      title="Clinical operations research & product dispatches"
+      subtitle="Implementation playbooks, HIPAA & GDPR security checklists, and specialty workflow case studies from Hypocrates practices."
     >
-      <div className="max-w-[1060px] mx-auto px-5 grid grid-cols-1 md:grid-cols-3 gap-6">
-        {posts.map((post) => (
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        {resourceItems.map((item) => (
           <article
-            key={post.title}
-            className="rounded-[24px] bg-[#edf1f4] border border-[#dde5ed] p-7 flex flex-col justify-between"
+            key={item.id}
+            className="rounded-[24px] bg-white p-7 border border-[#dee5ec] shadow-[0_8px_24px_rgba(0,0,0,0.03)] flex flex-col"
           >
-            <div>
-              <span className="inline-block px-3 py-1 rounded-full bg-white text-[13px] font-display font-semibold text-[#3b82f6]">
-                {post.tag}
+            <div className="flex items-center justify-between gap-2 mb-4">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-semibold uppercase tracking-[0.06em] bg-[#3b82f6]/10 text-[#3b82f6]">
+                <BookOpen className="w-3 h-3" />
+                {item.categoryLabel}
               </span>
-              <h2 className="mt-4 font-heading font-semibold text-[22px] leading-[1.25em] text-[#1d1d1d]">
-                {post.title}
-              </h2>
-              <p className="mt-3 font-display font-medium text-[15px] leading-[1.45em] text-[#4d585f]">
-                {post.excerpt}
-              </p>
+              <span className="inline-flex items-center gap-1 text-[12px] text-[#5c6670]">
+                <Clock className="w-3.5 h-3.5" />
+                {item.readTime}
+              </span>
             </div>
-            <div className="mt-6 font-display font-medium text-[13px] text-[#4d585f]">
-              {post.date}
+
+            <h2 className="text-[19px] font-semibold text-[#1d1d1d] leading-[1.3] mb-2">
+              {item.title}
+            </h2>
+            <p className="text-[14px] text-[#5c6670] leading-[1.6] mb-5">
+              {item.desc}
+            </p>
+
+            <ul className="flex flex-col gap-2 text-[13px] text-[#3a424b] mb-6 pt-4 border-t border-[#eef2f6]">
+              {item.highlights.map((h) => (
+                <li key={h} className="leading-[1.5]">
+                  • {h}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-auto flex items-center justify-between pt-3 border-t border-[#eef2f6] text-[12.5px] text-[#5c6670]">
+              <span className="inline-flex items-center gap-1.5">
+                <Calendar className="w-3.5 h-3.5" />
+                {item.date}
+              </span>
+              <Link
+                href="/resources"
+                className="inline-flex items-center gap-1 font-semibold text-[#3b82f6] hover:underline"
+              >
+                Read in Library
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
           </article>
         ))}
@@ -58,4 +73,3 @@ export default function BlogPage() {
     </SubpageShell>
   );
 }
-

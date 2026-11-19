@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/sections/HeroSection";
+import { SpecializedClinicsSection } from "@/components/hypocrates/SpecializedClinicsSection";
 import { OverviewAndHowItWorks } from "@/components/sections/OverviewAndHowItWorks";
 import { CoreFeaturesSection } from "@/components/sections/CoreFeaturesSection";
 import { IntegrationsAndStats } from "@/components/sections/IntegrationsAndStats";
@@ -13,6 +14,7 @@ export default function HomeTwoPage() {
       <Navbar />
       <main>
         <HeroSection />
+        <SpecializedClinicsSection includeSimulator={false} />
         <CoreFeaturesSection />
         <OverviewAndHowItWorks />
         <IntegrationsAndStats />
@@ -22,4 +24,3 @@ export default function HomeTwoPage() {
     </div>
   );
 }
-

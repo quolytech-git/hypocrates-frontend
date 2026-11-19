@@ -5,9 +5,73 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { PrimaryGlassButton, SecondaryPillButton } from "@/components/ui/ActionButtons";
 import { SpringReveal } from "@/components/ui/MotionPrimitives";
+import { HypocratesLogo } from "@/components/HypocratesLogo";
+
+const productLinks = [
+  { label: "Platform Overview", href: "/platform" },
+  { label: "Patient Booking Portal", href: "/#patient-booking" },
+  { label: "Features & Modules", href: "/features" },
+  { label: "Integrations", href: "/integrations" },
+  { label: "Live Demos", href: "/demo" },
+];
+
+const solutionsLinks = [
+  { label: "Physiotherapy", href: "/solutions/physiotherapy" },
+  { label: "Hair Transplant", href: "/solutions/hair-transplant" },
+  { label: "Gynecology", href: "/solutions/gynecology" },
+  { label: "Dermatology", href: "/solutions/dermatology" },
+  { label: "Dental Clinics", href: "/solutions/dental" },
+  { label: "Plastic Surgery", href: "/solutions/plastic-surgery" },
+  { label: "ENT Clinics", href: "/solutions/ent" },
+  { label: "Nutrition Clinics", href: "/solutions/nutrition" },
+  { label: "Eye Centers", href: "/solutions/eye-center" },
+];
+
+const companyLinks = [
+  { label: "About Us", href: "/about" },
+  { label: "Resources", href: "/resources" },
+  { label: "Contact", href: "/contact" },
+  { label: "Careers", href: "/careers" },
+  { label: "Partner Program", href: "/partner-program" },
+];
+
+const legalLinks = [
+  { label: "Privacy Policy", href: "/legal/privacy-policy" },
+  { label: "Terms of Service", href: "/legal/terms-of-service" },
+  { label: "Cookie Policy", href: "/legal/cookie-policy" },
+  { label: "Data Protection", href: "/legal/data-protection-policy" },
+  { label: "HIPAA Compliance", href: "/legal/hipaa-compliance" },
+  { label: "GDPR Compliance", href: "/legal/gdpr-compliance" },
+  { label: "Security", href: "/legal/security" },
+  { label: "Trust Center", href: "/compliance" },
+];
 
 export function Footer() {
   const pathname = usePathname();
+
+  const renderLinkList = (
+    items: { label: string; href: string }[],
+  ) => (
+    <ul className="space-y-2.5">
+      {items.map((item) => {
+        const isActive = pathname === item.href;
+        return (
+          <li key={item.href}>
+            <Link
+              href={item.href}
+              className={`font-display font-medium text-[15px] leading-[1.35em] transition-colors duration-[300ms] ${
+                isActive
+                  ? "text-[#3b82f6]"
+                  : "text-[#4d585f] hover:text-[#3b82f6]"
+              }`}
+            >
+              {item.label}
+            </Link>
+          </li>
+        );
+      })}
+    </ul>
+  );
 
   return (
     <footer className="relative overflow-hidden pt-28 md:pt-36">
@@ -30,22 +94,22 @@ export function Footer() {
       {/* Pre-Footer CTA */}
       <div className="relative z-10 max-w-[780px] mx-auto px-6 text-center pb-20 md:pb-24">
         <SpringReveal>
-          <h2 className="font-heading font-semibold text-[36px] md:text-[48px] leading-[1.2em] tracking-[-1px] text-[#1d1d1d]">
-            Ready to invest smarter?
+          <h2 className="font-heading font-semibold text-[34px] md:text-[48px] leading-[1.15em] tracking-[-1px] text-[#1d1d1d]">
+            Transform your clinic into an AI-powered healthcare system
           </h2>
-          <p className="mt-4 font-display font-medium text-[18px] leading-[1.4em] text-[#4d585f] max-w-[540px] mx-auto">
-            Join investors using AI insights and real-time data to track
-            portfolios and make better financial decisions.
+          <p className="mt-4 font-display font-medium text-[18px] leading-[1.4em] text-[#4d585f] max-w-[560px] mx-auto">
+            Reclaim 12+ hours weekly per practitioner with ambient SOAP scribing,
+            multi-location tenant isolation, and orchestrated clinical AI.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <PrimaryGlassButton
-              href="/pricing"
-              label="Start free trial"
+              href="/demo"
+              label="Request Demo"
               variant="blue"
             />
             <SecondaryPillButton
-              href="/request-demo"
-              label="Try the live demo"
+              href="/contact"
+              label="Contact Sales"
               variant="white"
             />
           </div>
@@ -57,165 +121,92 @@ export function Footer() {
         <div className="bg-white rounded-t-[30px] px-7 md:px-14 pt-12 md:pt-14 pb-9 shadow-[0_-10px_40px_rgba(0,0,0,0.04)]">
           <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8">
             {/* Brand + Support Email */}
-            <div className="md:col-span-5 flex flex-col items-start">
-              <Link href="/" aria-label="FintechX Home">
-                <img
-                  src="/images/logo.svg"
-                  alt="FintechX"
-                  className="h-[30px] w-auto"
-                />
+            <div className="md:col-span-4 flex flex-col items-start">
+              <Link href="/" aria-label="Hypocrates Home">
+                <HypocratesLogo size="xl" />
               </Link>
-              <p className="mt-4 font-display font-medium text-[16px] leading-[1.45em] text-[#4d585f] max-w-[300px]">
-                A modern platform for smarter portfolio tracking and financial
-                insights.
+              <p className="mt-4 font-display font-medium text-[15px] leading-[1.45em] text-[#4d585f] max-w-[290px]">
+                The AI Management System for Modern Healthcare Clinics.
               </p>
               <a
-                href="mailto:support@yourbrand.com"
+                href="mailto:sales@hypocrates.ai"
                 className="mt-7 inline-flex items-center justify-center rounded-full bg-[#1d1d1d] hover:bg-[#323232] text-white font-display font-semibold text-[15px] px-7 py-3.5 transition-colors duration-300"
               >
-                support@yourbrand.com
+                sales@hypocrates.ai
               </a>
             </div>
 
-            {/* Quick links */}
+            {/* Product */}
             <div className="md:col-span-2">
-              <h3 className="font-display font-medium text-[20px] leading-[1.3em] text-[#1d1d1d] mb-4">
-                Quick links
+              <h3 className="font-display font-semibold text-[17px] leading-[1.3em] text-[#1d1d1d] mb-4">
+                Product
               </h3>
-              <ul className="space-y-3">
-                {[
-                  { label: "Features", href: "/#core-features" },
-                  { label: "How It Works", href: "/#how-it-works" },
-                  { label: "Use Cases", href: "/#use-cases" },
-                  { label: "Integrations", href: "/#integrations" },
-                ].map((item) => (
-                  <li key={item.label}>
-                    <Link
-                      href={item.href}
-                      className="font-display font-medium text-[16px] leading-[1.3em] text-[#4d585f] hover:text-[#3b82f6] transition-colors duration-[400ms]"
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              {renderLinkList(productLinks)}
             </div>
 
-            {/* Pages */}
-            <div className="md:col-span-3">
-              <h3 className="font-display font-medium text-[20px] leading-[1.3em] text-[#1d1d1d] mb-4">
-                Pages
+            {/* Solutions */}
+            <div className="md:col-span-2">
+              <h3 className="font-display font-semibold text-[17px] leading-[1.3em] text-[#1d1d1d] mb-4">
+                Solutions
               </h3>
-              <ul className="space-y-3">
-                {[
-                  { label: "Home", href: "/" },
-                  { label: "Home 2", href: "/home-2", badge: "New" },
-                  { label: "Features", href: "/features" },
-                  { label: "Pricing", href: "/pricing" },
-                  { label: "Blog", href: "/blog" },
-                  { label: "About", href: "/about" },
-                  { label: "Waitlist", href: "/waitlist" },
-                ].map((item) => {
-                  const isActive = pathname === item.href;
-                  return (
-                    <li key={item.label} className="flex items-center gap-2">
-                      <Link
-                        href={item.href}
-                        className={`font-display font-medium text-[16px] leading-[1.3em] transition-colors duration-[400ms] ${
-                          isActive
-                            ? "text-[#3b82f6]"
-                            : "text-[#4d585f] hover:text-[#3b82f6]"
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                      {item.badge && (
-                        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-black text-white font-display font-semibold text-[12px] leading-[1.3em]">
-                          {item.badge}
-                        </span>
-                      )}
-                    </li>
-                  );
-                })}
-              </ul>
+              {renderLinkList(solutionsLinks)}
             </div>
 
-            {/* Support */}
+            {/* Company */}
             <div className="md:col-span-2">
-              <h3 className="font-display font-medium text-[20px] leading-[1.3em] text-[#1d1d1d] mb-4">
-                Support
+              <h3 className="font-display font-semibold text-[17px] leading-[1.3em] text-[#1d1d1d] mb-4">
+                Company
               </h3>
-              <ul className="space-y-3">
-                {[
-                  { label: "FAQs", href: "/faqs" },
-                  { label: "Contact", href: "/contact" },
-                  { label: "Changelog", href: "/changelog" },
-                  { label: "Privacy Policy", href: "/legal-pages/privacy-policy" },
-                  { label: "Request a Demo", href: "/request-demo" },
-                ].map((item) => {
-                  const isActive = pathname === item.href;
-                  return (
-                    <li key={item.label}>
-                      <Link
-                        href={item.href}
-                        className={`font-display font-medium text-[16px] leading-[1.3em] transition-colors duration-[400ms] ${
-                          isActive
-                            ? "text-[#3b82f6]"
-                            : "text-[#4d585f] hover:text-[#3b82f6]"
-                        }`}
-                      >
-                        {item.label}
-                      </Link>
-                    </li>
-                  );
-                })}
-              </ul>
+              {renderLinkList(companyLinks)}
+            </div>
+
+            {/* Legal & Trust */}
+            <div className="md:col-span-2">
+              <h3 className="font-display font-semibold text-[17px] leading-[1.3em] text-[#1d1d1d] mb-4">
+                Legal &amp; Trust
+              </h3>
+              {renderLinkList(legalLinks)}
             </div>
           </div>
 
+          {/* Clinical Disclaimer */}
+          <div className="mt-10 pt-6 border-t border-[#edf1f4]">
+            <p className="font-display font-medium text-[12.5px] leading-[1.55em] text-[#4d585f] text-center max-w-[920px] mx-auto">
+              <strong className="text-[#1d1d1d]">Disclaimer:</strong> Hypocrates is an
+              AI-powered administrative assistant designed to optimize clinical
+              documentation. The platform does not provide medical advice,
+              diagnosis, or treatment. Licensed healthcare professionals are solely
+              responsible for reviewing and verifying the accuracy, completeness,
+              and appropriateness of all documentation, notes, and records
+              generated or processed by the system before clinical use.
+            </p>
+          </div>
+
           {/* Bottom Bar */}
-          <div className="mt-12 pt-6 border-t border-[#edf1f4] flex flex-col sm:flex-row items-center justify-between gap-4">
-            <p className="font-display font-medium text-[15px] text-[#4d585f]">
-              Designed by{" "}
-              <a
-                href="https://www.webestica.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-4 hover:text-[#3b82f6] transition-colors"
-              >
-                Webestica
-              </a>
-              , Powered by{" "}
-              <a
-                href="https://framer.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline underline-offset-4 hover:text-[#3b82f6] transition-colors"
-              >
-                Framer
-              </a>
-              .
+          <div className="mt-6 pt-6 border-t border-[#edf1f4] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <p className="font-display font-medium text-[14px] text-[#4d585f]">
+              &copy; 2026 Hypocrates. All rights reserved.
             </p>
             <div className="flex items-center gap-2.5">
               {[
                 {
+                  name: "Facebook",
+                  href: "https://facebook.com/",
+                  icon: "/images/social-fb.svg",
+                },
+                {
                   name: "Instagram",
-                  href: "https://www.instagram.com/",
+                  href: "https://instagram.com/",
                   icon: "/images/social-ig.svg",
                 },
                 {
                   name: "LinkedIn",
-                  href: "https://www.linkedin.com/",
+                  href: "https://linkedin.com/",
                   icon: "/images/social-li.svg",
                 },
                 {
-                  name: "Facebook",
-                  href: "https://www.facebook.com/",
-                  icon: "/images/social-fb.svg",
-                },
-                {
-                  name: "X",
-                  href: "https://x.com/",
+                  name: "Twitter",
+                  href: "https://twitter.com/",
                   icon: "/images/social-x.svg",
                 },
               ].map((social) => (
@@ -241,4 +232,3 @@ export function Footer() {
     </footer>
   );
 }
-
